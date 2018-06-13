@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 配置PageHelper插件 -->
+	<plugins>
+		<!-- 插件类 -->
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<!-- 方言,mysql的时候人家自动使用 limit ,oracle 的时候rownum ,sqlserver 是 top -->
+			<property name="dialect" value="mysql" />
+		</plugin>
+	</plugins>
+</configuration>
