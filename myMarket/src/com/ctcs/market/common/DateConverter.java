@@ -10,7 +10,7 @@ public class DateConverter extends PropertyEditorSupport{
 	@Override
 	public void setAsText(String text) throws IllegalArgumentException {
 		// TODO Auto-generated method stub
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			Date d = sdf.parse(text);
 			this.setValue(d);
