@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	   xmlns:mvc="http://www.springframework.org/schema/mvc"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
@@ -76,7 +75,7 @@
 		<property name="suffix" value=".jsp"></property> </bean> -->
 
 	<!-- 利用DBCP|C3P0连接池配置数据源 sm整合 -->
-	<bean id="ds" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<!-- 公网IP：60.205.143.19；内网IP：10.26.83.199 -->
 		<property name="url" value="jdbc:mysql://60.205.143.19/goodsdb?useUnicode=true&amp;characterEncoding=UTF-8"></property>
@@ -88,7 +87,7 @@
 		<!-- 设置数据源 -->
 		<property name="dataSource" ref="ds"></property>
 		<!-- 在SF初始化的时候自动扫描mybatis包下所有的mapper SQL的XML文件,不再需要一个一个手动注册 -->
-		<property name="mapperLocations" value="classpath:/*.xml"></property>
+		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
 		<!-- 增加对于pageHelper的支持 -->
 		<property name="configLocation" value="classpath:mybatis.xml"></property>
 	</bean>
