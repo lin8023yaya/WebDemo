@@ -1,0 +1,80 @@
+body{
+    /*background-image: url("../img/bg01.png");*/
+    background-size: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.write{
+    margin-top: -5em;
+}
+#camera{
+    /*float: left;*/
+    max-width:250px;
+    max-height: 250px;
+    /*margin-bottom: 2%;*/
+    margin-top:40%;
+    /*margin-left: -1em;*/
+}
+#iptfileupload{
+    width: 0;
+    height: 0;
+    display: none;
+}
+#suggest_content{
+    position: absolute;
+    top:25em;
+    left: 4.5em;
+    font-size:16px;
+    border: 2px solid #000;
+    background-color:transparent ;
+}
+#localtime{
+    font-size: 14px;
+    margin-left: 14em;
+    margin-top: -6em;
+}
+.submit img{
+    width: 165px;
+    height: 50px;
+    margin-left: 7.5em;
+    margin-top: 7em;
+    /*position: relative;*/
+}
+
+.submit{
+    position: relative;
+    /*top:37em;*/
+    /*margin-left: 19em;*/
+}
+.button{
+    font-size: 20px;
+    font-weight: bold;
+    background: transparent;
+    width: 110px;
+    height: 35px;
+    border: 1px solid transparent;
+    position: absolute;
+    top: 0.5em;
+    margin-left: 6.5em;
+}
+.main{
+    width: 100%;
+    height: 100%;
+}
+input[type="submit"]{
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 18px;
+    background-color: #5792BD;
+    margin-left: 5.5em;
+    margin-top: 3em;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+
+
+

@@ -1,16 +1,21 @@
+
 <%--
   Created by IntelliJ IDEA.
-  User: msj
-  Date: 2018/6/12
-  Time: 10:26
+  User: lin
+  Date: 2018/6/14
+  Time: 13:18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="java.util.Map"%>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-    测试数据
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <title>做自己的王</title>
+</head>
+<body>
+    一杯敬明天,一杯敬过往!
+</body>
 </html>

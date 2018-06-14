@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title></title>
+    <!--<link href="css/bootstrap.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/mobile.css"/>
+    <style>
+        /* 定义模态对话框外面的覆盖层样式 */
+        #modal-overlay {
+            /*visibility: hidden;*/
+            display: block;
+            position: absolute; /* 使用绝对定位或固定定位 */
+            left: 0px;
+            top: 0px;
+            width:100%;
+            height:100%;
+            text-align:center;
+            z-index: 1000;
+            background:rgba(100,100,100,0.8)
+            /*background-color: #333;*/
+            /*opacity: 0.8; /!* 背景半透明 *!/*/
+        }
+        /* 模态框样式 */
+        .modal-data{
+            width:333px;
+            margin: 85px auto;
+            background-color: transparent;
+            /*border:1px solid #000;*/
+            /*padding:15px;*/
+            text-align:center;
+            position:relative;
+        }
+        .button{
+            position: absolute;
+            top:7.5em;
+            left: 1.8em;
+        }
+        .input{
+            width: 320px;
+            margin: 20px 40px;
+            position: absolute;
+            top:205px;
+            left: 14px;
+        }
+        input[type="text"]{
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 1.1em;
+            height: 1.9em;
+            width: 13em;
+            border-radius: 20px;
+            border: 1px solid #515151;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            display: block;
+            outline: 0;
+            padding: 0 1em;
+            background: #fff;
+            /*opacity: 0.1;*/
+            margin: -5px 3px;
+        }
+        .prize p{
+            font-weight: bold;
+            font-size: 28px;
+            color: #5B2B2B;
+            margin-top: -12.5em;
+        }
+        #tijiao{
+            opacity: 0;
+
+        }
+        #modal-overlay{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="mian">
+    <div class="choujiang">
+        <input type="button" value="sss" id="btn" style="display: none;"/>
+        <img src="img/click.png" alt="" id="click" style="width: 120px;height: auto; position: absolute;top:280px;left: 130px;"/>
+        <!--模态框-->
+        <div id="modal-overlay" style="float: left;">
+            <div class="modal-data">
+                <img src="./img/win.png" alt="" style="width: 340px; height: 430px;" />
+                <form action="">
+                    <div class="prize">
+                        <p></p>
+                    </div>
+                    <div class="input">
+                        <input type="text" placeholder="请输入手机号码" name="phone"/>
+                        <br/>
+                        <input type="text" placeholder="请输入验证码" name="num"/>
+                    </div>
+                </form>
+                <input type="submit" value="" id="tijiao"/>
+                <img src="img/gain.png" alt=""  style="width: 100px; height: 35px;position: absolute;left: 11.6em;top:16.5em;"/>
+                <div id="close">
+                    <a href="message.html">
+                        <img src="img/get.png" alt="" style="width: 150px; height: 45px;position: fixed;top:25em;left: 7.5em;" class="get" id="get"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <!--模态框结束-->
+</div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.mian').css('height',$(window).height());
+    });
+</script>
+<script>
+    jQuery(function () {
+        $("#click").click(function () {
+            $("#btn").click();
+        });
+        $("#close").click(function () {
+            $("#tijiao").click();
+        });
+
+    });
+</script>
+    <!--模态框JS-->
+    <script>
+        $(".choujiang").click(function(){
+            document.getElementById('modal-overlay').style.display =  "block" ;
+        })
+    </script>
+    <script>
+        $(".get").click(function(){
+            document.getElementById('modal-overlay').style.display =  "none" ;
+        })
+    </script>
+    <!--模态框JS结束-->
+<script>
+//    $('#btn').click(function(){
+//        var url = 'xxx.action';
+////        var data=('#btn').val();
+//        $.ajax({
+//            type: 'post',
+//            url: url ,
+////            data: {
+////                data:data
+////            } ,
+////            cache:false,
+//            dataType:'json',
+//            success: function(result){
+//                if(result){
+//                    console.log(result);
+//                }else{
+//                    console.log(result);
+//                }
+//            },
+//            error : function() {
+//                console.log("error");
+//            }
+//        });
+//    })
+</script>
+<!--显示奖品名称-->
+<script>
+    $(document).ready(function(){
+        var url=location.search.split('=')[1];
+        $.ajax({
+            type: 'post',
+            url: "http://goods.zkxaiot.cn/Market/luck?code="+url,
+            dataType:'json',
+            contentType: "application/json;charset=utf-8",
+           // data: {"url":url},
+//            data: JSON.stringify({giftName: name,index: num,vendorid:vendorid,promotionid:promotionid}),
+            success: function(result){
+//                alert(url);
+//                奖品名称
+                var name = result.giftlist[0].giftName;
+                alert(name);
+//                奖品等级
+                var num = result.giftlist[0].index;
+                alert(num);
+//                商家编号
+                var vendorid = result.giftlist[0].vendorid;
+                alert(vendorid);
+//                活动编号
+
+               var promotionid= result.giftlist[0].promotionid;
+                alert(promotionid);
+
+                $('.prize p').html( result.giftlist[0].giftName);
+
+                <!--页面间的跳转和传参-->
+                var url2 = "message.html?code="+url+"&name="+name+"&vendorid="+vendorid+"&promotionid="+promotionid;
+                alert(url2);
+                $("#get").click(function(){
+                    window.open(url2)
+                    return false;
+                });
+
+            },
+            error : function() {
+                console.log("error");
+            }
+        });
+
+    })
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

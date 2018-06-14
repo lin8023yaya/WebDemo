@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>怀旧模式-营销活动</title>
+    <!-- Bootstrap -->
+    <!--<link href="css/bootstrap.css" rel="stylesheet">-->
+    <!-- [if lt IE 9]> -->
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <link rel="stylesheet" href="css/intel.css"/>
+    <link rel="stylesheet" href="css/my_else.css"/>
+    <!-- <![endif] -->
+</head>
+<body>
+<div class="write" style="text-align:center">
+    <!--<img src="image/write.png" alt="" class="img-responsive"/>-->
+    <img src='img/camera.png' alt='' id='camera' align="center" width="200" height="150"  style="text-align:center;"/>
+</div>
+<!--form表单部分-->
+<form action="saveCard"  enctype="multipart/form-data"  method='post' name='myform'>
+    <input type='file' id='iptfileupload' name="file" onchange='show()' value='' />
+    <textarea id="suggest_content" name="word"  cols="21" rows="2"placeholder="请输入您想对他（她）说的话(60字以内)"></textarea>
+    <!--<h2 id="localtime"></h2>-->
+    <div class="submit">
+        <img src="img/btSubmit.png"  class="img-responsive" alt=""/>
+        <input type="submit" value="" class="button"/>
+    </div>
+</form>
+<!--提交按钮-->
+
+<script src="js/jquery-1.11.3.js"></script>
+<!--<script src="js/bootstrap.min.js"></script>-->
+<!--<script src="js/btSubmit.js"></script>-->
+<script src="js/img_upload.js"></script>
+<!--<script src="js/localtime.js"></script>-->
+<script>
+    jQuery(function () {
+        $("#camera").click(function () {
+            $("#iptfileupload").click();
+        });
+    });
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title></title>
+    <!--<link href="css/bootstrap.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="css/mobile.css"/>
+    <style>
+        .mian {
+            background: url('img/message_bg.png') no-repeat;
+            background-size: cover;
+            width: 100%;
+            position: relative;
+            height:auto;
+        }
+        .input_man{
+            width: 320px;
+            margin: 20px 40px;
+            position: absolute;
+            top:304px;
+            left: 90px;
+        }
+        .input_phone{
+            width: 320px;
+            margin: 20px 40px;
+            position: absolute;
+            top:350px;
+            left: 105px;
+        }
+        .input_place{
+            width: 320px;
+            margin: 20px 40px;
+            position: absolute;
+            top:398px;
+            left: 105px;
+        }
+        input[type="text"]{
+            box-sizing: border-box;
+            text-align: left;
+            font-size: 1.1em;
+            height: 1.9em;
+            width: 13em;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            display: block;
+            outline: 0;
+            padding: 0 1em;
+            background: #fff;
+            /*opacity: 0.1;*/
+            margin: -5px 3px;
+        }
+        input[type="submit"]{
+            display: none;
+        }
+        p{
+            padding-top: 39em;
+            padding-left: 5em;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="mian">
+        <img src="img/fill_in.png" alt="" style="width: 320px;height: auto; position: absolute;top:200px;left: 30px;"/>
+        <p>（请保持电话畅通，我们的工作人员
+            <br/>
+            会在24小时内与您联系）</p>
+        <img src="img/submit.png" alt="" id="submit_img" style="width: 120px;height: auto; position: absolute;top:450px;left: 123px;"/>
+        <form action="">
+            <input type="text" class="input_man"/>
+            <input type="text" class="input_phone"/>
+            <input type="text" class="input_place"/>
+        </form>
+        <input type="submit" id="submit"/>
+    </div>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.mian').css('height',$(window).height());
+        });
+        jQuery(function () {
+            $("#submit_img").click(function () {
+                $("#submit").click();
+            });
+        });
+    </script>
+    
+    <script>
+       <!--  $("#submit_img").click(function(){
+            var url=window.location.href;
+            $.ajax({
+                type: 'post',
+                url: "http://goods.zkxaiot.cn/Market/log" ,
+                dataType:'text',
+                data: {"index":index},
+                success: function(result){
+                   
+                },
+                error : function() {
+                    console.log("error");
+                }
+            });
+        }) -->
+    </script>
+    <script>
+        $("#submit_img").click(function GetReques(){
+			      var name=$(".input_man").val();
+			      var tel=$(".input_phone").val();
+				  var address=$(".input_place").val();
+
+                var url = location.search; //获取url中"?"符后的字串
+                alert(url);
+//            var url = window.location.search;
+//            url = url.substring(url.indexOf("?"),url.length-1);
+//            alert(url);
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(57);
+                    alert(str);
+
+                    strs = str.split("&");
+                    alert(strs);
+                    for(var i = 0; i < strs.length; i ++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                    var code=strs[0];
+                    alert(code);
+                    var prize=strs[1];
+                    alert(prize);
+                    var index=strs[2];
+                    alert(index);
+                    var vendorid=strs[3];
+                    alert(vendorid);
+                    var promotionid=strs[4];
+                    alert(promotionid);
+                }
+                return theRequest;
+            var Request = new Object();
+            Request = GetRequest();
+            $.ajax({
+                type: 'post',
+                url: "http://goods.zkxaiot.cn/Market/log" ,
+                dataType:'text',
+                contentType: "application/json;charset=utf-8",
+                data: {"code":code,"prize":prize,"vendorid":vendorid,"promotionid":promotionid,"name":name,"tel":tel,"address":address},
+//            data: JSON.stringify({giftName: name,index: num,vendorid:vendorid,promotionid:promotionid}),
+                success: function(result){
+                 alert(result);
+                },
+                error : function() {
+                    console.log("error");
+                }
+            });
+
+        })
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

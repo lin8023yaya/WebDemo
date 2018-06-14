@@ -1,0 +1,62 @@
+@import "bootstrap";
+body{
+  margin-top: @navbar-height;
+  font-size: 14px;
+}
+.logo{
+  display: inline-block;
+  width:63px ;
+  height: 42px;
+  background: url(../img/hdr-spr.png) 0 -512px no-repeat;
+  margin-top: -10px;
+}
+
+@media screen and (max-width: @screen-xs-max) {
+  .navbar .navbar-form,
+  .navbar span.navbar-text
+  {
+    display: none;
+  }
+  .navbar .navbar-text{
+    display: block;
+  }
+
+}
+
+
+.main{
+  background-color: @blue-dark;
+  color: #fff;
+  a{
+    color: #fff;
+    &:hover{
+      color: @blue-light;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .main .small .media {
+    padding: 3.3em;
+  }
+  .main .small .media li{
+    line-height: 2em;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px){
+  .main .small .media {
+    padding: 1.7em;
+  }
+  .main .small .media li{
+    line-height: 2em;
+  }
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+  .main .small .media {
+    padding: 2.3em;
+  }
+  .main .small .media li{
+    line-height: 2em;
+  }
+}
+.footer{}

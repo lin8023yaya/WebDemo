@@ -1,0 +1,80 @@
+/* No CSS needed, but you can pimp the container and the signs as you wish. */
+
+
+/* all sign style */
+.ratyli .rate{color: #ccc; font-size: 24px;}
+
+/* empty sign style */
+.ratyli .rate-empty{color: #666;}
+
+/* full sign style after rating*/
+.ratyli.rated .rate-full{color: #fe5845;}
+
+/* active signs (hover)*/
+.ratyli .rate-active{color: #a94039;}
+
+
+
+/* layout styles (only for demo)*/
+body{/*font-family: sans-serif;*/ background:#fff; }
+h2{
+	color:#2B2727;
+	font-weight:500;
+	font-size:20px;
+	margin:5px 0;
+}
+.five1,.five2,.five3,.five4,.five5,.five6,.five7,.five8,.five9,.five10,.five11,.five12,.five13,.five14,.five15,.five16,.five17,.five18,.five19,.five20{
+	/*float:left; */
+	width:18%;
+	padding:30px 1%;
+	/*text-align:center;*/
+}
+@media screen and (max-width: 920px) {
+	.five1,.five2,.five3,.five4,.five5,.five6,.five7,.five8,.five9,.five10,.five11,.five12,.five13,.five14,.five15,.five16,.five17,.five18,.five19,.five20{float:none; width:90%; padding:6px 5%;}
+}
+
+
+textarea {
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	/*padding: 3px 0px 3px 3px;*/
+	margin-left: 10px;
+	margin-top: 10px;
+	border: 1px solid #C0C0C0;
+	border-radius: 5px;
+	background-color: #F2F2F2;
+
+}
+ textarea:focus {
+	box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+	padding: 3px 0px 3px 3px;
+	margin: 5px 1px 3px 0px;
+	border: 1px solid rgba(81, 203, 238, 1);
+}
+
+input[type="button"]{
+	background-color: #5792BC;
+	padding: 10px 30px;
+	border: none;
+	border-radius: 17px;
+	color: #fff;
+	font-size: 15px;
+	font-weight: 500;
+	margin-left: 30%;
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

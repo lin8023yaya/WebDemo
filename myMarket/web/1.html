@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/jquery-1.11.3.js"></script>
+<body>
+
+
+<!--<input type="button"  value="点击分享给朋友" style="height:200px;width: 300px;margin-left: 250px" id="onMenuShareAppMessage">-->
+
+<script>
+    $(function() {
+      //  alert(location.href.split('#')[0])
+     $.ajax({
+         type: 'get',
+         url: "http://goods.zkxaiot.cn/Market/share",
+         dataType:'json',
+         success: function(result){
+            // alert(result)
+             weixin(result);
+         },
+         error : function(result) {
+
+         }
+     });
+    function weixin(data) {
+       // alert(data.appId)
+       // alert(data.timestamp)
+       // alert(data.nonceStr)
+       // alert(data.signature)
+
+        wx.config({
+            debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId:data.appId, // 必填，公众号的唯一标识
+            timestamp: data.timestamp, // 必填，生成签名的时间戳
+            nonceStr: data.nonceStr, // 必填，生成签名的随机串
+            signature:data.signature,// 必填，签名，见附录1
+            jsApiList:[
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'onMenuShareQZone',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onVoiceRecordEnd',
+                'playVoice',
+                'onVoicePlayEnd',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        });
+
+        wx.ready(function (){
+            //隐藏微信按钮
+//            wx.hideMenuItems({
+//                menuList: ["menuItem:share:timeline","menuItem:share:appMessage"] // 要隐藏的菜单项，所有menu项见附录3
+//            });
+            //调用微信定位获取地理位置
+//            wx.getLocation({
+//                type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
+//                success: function (res) {
+//                    var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+//                    var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+//                    var speed = res.speed; // 速度，以米/每秒计
+//                    var accuracy = res.accuracy; // 位置精度
+//                    alert("纬度:"+latitude+"经度:"+longitude+"速度:"+speed+"位置精度:"+accuracy);
+//                }
+//            });
+            //分享QQ好友
+            wx.onMenuShareQQ({
+                title:"限时分享领现金红包", // 分享标题
+                desc:"分享拼酒活动到朋友圈即可领取微信现金红包一次，先到先得.....", // 分享描述
+                link:"http://goods.zkxaiot.cn/Market", // 分享链接
+                imgUrl:"http://car.zkxaiot.cn/img/hb.jpg", // 分享图标
+                success: function () {
+                    alert("分享成功--");
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+              //分享朋友圈
+            wx.onMenuShareTimeline({
+                title:"限时分享领现金红包", // 分享标题
+                link:"http://goods.zkxaiot.cn/Market",// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl:"http://car.zkxaiot.cn/img/hb.jpg",
+                success: function () {
+                    alert("分享成功--")
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                }
+            });
+             //分享给朋友
+            wx.onMenuShareAppMessage({
+                title:"2017惊显千年一遇的美女",
+                desc:"此人美过范冰冰，堪称千年难得一见的女神......",
+                link:"http://goods.zkxaiot.cn/Market/3.html",
+                imgUrl:"http://goods.zkxaiot.cn/Market/img/ld.JPG",
+                trigger: function (res) {
+                    // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                    alert('-----------用户点击发送给朋友');
+                },
+                success: function (res) {
+                    alert('-------已分享');
+                },
+                cancel: function (res) {
+                    alert('-----------已取消');
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            })
+        })
+        wx.error(function(res){
+            alert(res.errMsg);
+            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+        });
+    }
+    })
+
+
+</script>
+</body>
+</html>

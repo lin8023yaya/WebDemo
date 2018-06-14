@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.mian {
+  background: url("../img/bg01.png") fixed center center no-repeat;
+  background-size: cover;
+  width: 100%;
+  position: relative;
+}
+ .view {
+  width: 270px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 35%;
+  position: relative;
+   top: 42%;
+}
+.mian > .view > ul {
+  padding: 0;
+  margin: 0;
+  width: 1240px;
+  height: 500px;
+  position: absolute;
+  left: 12px;
+  top: 5%;
+  /*margin-top: -250px;*/
+}
+.mian > .view > ul > li {
+  list-style: none;
+  width: 265px;
+  /*height: 100%;*/
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: opacity 1000ms ease-out;
+  -moz-transition: opacity 1000ms ease-out;
+  -ms-transition: opacity 1000ms ease-out;
+  -o-transition: opacity 1000ms ease-out;
+  transition: opacity 1000ms ease-out;
+  vertical-align: bottom;
+  text-align: center;
+}
+.mian > .view > ul > li > img {
+  width: 70%;
+  margin-left: -25px;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.mian > .view > ul .active {
+  opacity: 1;
+}
+.mian .left {
+  position: absolute;
+  left: 15px;
+  top: -webkit-calc(58%);
+  top: -moz-calc(58%);
+  top: calc(58%);
+  width: 14px;
+  height: 26px;
+  background: url('../img/left.png') no-repeat;
+  background-size: 100%;
+}
+.mian .right {
+  position: absolute;
+  right: 28px;
+  top: -webkit-calc(58%);
+  top: -moz-calc(58%);
+  top: calc(58%);
+  width: 14px;
+  height: 26px;
+  background: url('../img/right.png') no-repeat;
+  background-size: 100%;
+}
+.black{
+  width: 100%;
+  height: 80px;
+  background-color: #000;
+  position: relative;
+  top: 53%;
+  /*float: left;*/
+  /*z-index: 0;*/
+  /*margin-left: 2em;*/
+  /*margin-top: 187px;*/
+  /*margin-bottom: 2em;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>发票管理</title>
+    <link rel="stylesheet" href="css/my.css"/>
+</head>
+<body>
+<div class="write" style="text-align:center">
+    <img src='image/camera.png' alt='' id='camera' align="center" width="330" height="auto"  style="text-align:center;"/>
+</div>
+<!--form表单部分-->
+<form action=""  enctype="multipart/form-data"  method='post' name='myform'>
+    <input type='file' id='iptfileupload' name="file" onchange='show()' value='' />
+    <input type="submit" value="提  交"  onclick="fp()" />
+</form>
+<!--提交按钮-->
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<!--<script src="js/bootstrap.min.js"></script>-->
+<!--<script src="js/btSubmit.js"></script>-->
+<script src="js/img_upload.js"></script>
+<!--<script src="js/localtime.js"></script>-->
+<script>
+    jQuery(function () {
+        $("#camera").click(function () {
+            $("#iptfileupload").click();
+        });
+    });
+   function fp(){
+	  var oData = new FormData(document.forms.namedItem("myform" ));
+    //  oData.append( "CustomField", "This is some extra data" );
+       var oReq = new XMLHttpRequest();
+       oReq.open( "POST", "http://goods.zkxaiot.cn/Market/saveinvoice" , true );
+       oReq.onload = function(oEvent) {
+      if (oReq.status == 200) {
+         alert("Uploaded!") ;
+     } else {
+		 alert( "Error " + oReq.status + " occurred uploading your file.<br \/>") ;
+         
+     }
+};
+oReq.send(oData);
+   }
+</script>
+</body>
+</html>
+
+

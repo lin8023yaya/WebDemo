@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+<input type="text" id="code">
+<button onclick="redpack()">领取红包</button>
+<!--
+<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0a6aef06d30ce048&redirect_uri=http%3a%2f%2fgoods.zkxaiot.cn%2fMarket%2fredpacket&response_type=code&scope=snsapi_base&state=zkxaiot123456#wechat_redirect">确定</a>
+-->
+
+<script>
+    function redpack() {
+        var code=$("#code").val();
+        window.open("http://goods.zkxaiot.cn/Market/wxredpacket?address=北京&tel=110&code="+code);
+       /* $.ajax({
+            type: 'get',
+            url: "http://goods.zkxaiot.cn/Market/wxredpacket?address=北京&tel=110&code="+code,
+            dataType:'json',
+            success: function(result){
+                alert(result.result);
+            },
+            error : function(result) {
+                alert(result.result);
+            }
+        })*/
+    }
+
+</script>
+
+</body>
+</html>

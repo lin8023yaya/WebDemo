@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+		<title></title>
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+	</head>
+	<body>
+		<form id= "uploadForm"     encType="multipart/form-data"  method="post"  >
+			<input type="text"  name="code"  value="f61026f90a9e00000046b60d1bdb" />
+			<!--<input type="text"  name="appkey"  />-->
+             <input type="file" name="file"/>
+             
+         </form>
+         <button onclick="test()">提交</button>
+		<script>
+			
+			//	alert("--");
+
+			  function test(){
+			  	alert("提交")
+                  var file = new FormData($( "#uploadForm" )[0]);
+                 // alert(files);
+                  $.ajax({
+                      url:"http://localhost:8010/picturelicense?code="+"f61026f90a9e00000046b60d1bdb",
+                      type:'POST',
+                      data: file,
+                      async: false,
+                      cache: false,
+                      contentType: false,
+                      processData: false,
+                      success: function (returndata) {
+                          alert(returndata.result);
+                      },
+                      error: function (returndata) {
+                          alert("error");
+                      }
+                  });
+              }
+		</script>
+	</body>
+</html>
