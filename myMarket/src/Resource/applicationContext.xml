@@ -78,9 +78,9 @@
 	<bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<!-- 公网IP：60.205.143.19；内网IP：10.26.83.199 -->
-		<property name="url" value="jdbc:mysql://60.205.143.19/goodsdb?useUnicode=true&amp;characterEncoding=UTF-8"></property>
-		<property name="username" value="ca"></property>
-		<property name="password" value="jdr^x7Rqhj3IQb##"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1/goodsdb?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
 	</bean>
 	<!-- 初始化MyBatis SessionFactory,我们不再需要手动初始化SF对象,Mybatis会自动在IOC容器加载的时候初始化 -->
 	<bean id="sf" class="org.mybatis.spring.SqlSessionFactoryBean">

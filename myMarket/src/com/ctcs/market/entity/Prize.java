@@ -177,4 +177,29 @@ public class Prize {
     public void setOdds6(String odds6) {
         this.odds6 = odds6;
     }
+
+    @Override
+    public String toString() {
+        return "Prize{" +
+                "id=" + id +
+                ", promotionId=" + promotionId +
+                ", vendorId=" + vendorId +
+                ", name='" + name + '\'' +
+                ", tel=" + tel +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", prize1='" + prize1 + '\'' +
+                ", odds1='" + odds1 + '\'' +
+                ", prize2='" + prize2 + '\'' +
+                ", odds2='" + odds2 + '\'' +
+                ", prize3='" + prize3 + '\'' +
+                ", odds3='" + odds3 + '\'' +
+                ", prize4='" + prize4 + '\'' +
+                ", odds4='" + odds4 + '\'' +
+                ", prize5='" + prize5 + '\'' +
+                ", odds5='" + odds5 + '\'' +
+                ", prize6='" + prize6 + '\'' +
+                ", odds6='" + odds6 + '\'' +
+                '}';
+    }
 }

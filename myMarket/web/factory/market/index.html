@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/factory/market/js/jquery-1.11.3.min.js"></script>
+    <script src="/factory/market/laydate/laydate.js"></script>
+    <style>
+        table{
+            border: 1px solid grey;
+        }
+        .discript_detail{
+            border: 1px solid grey;
+            border-bottom: 0;
+            height: 100px;
+        }
+        .discript_head{
+            background-color: #E6E6E6;
+        }
+        .activity td{
+            border: 1px solid grey;
+        }
+        .activity table{
+            border-bottom: 0;
+        }
+        /*table td{*/
+            /*padding:0;*/
+        /*}*/
+        .prize_level{
+            border-top:0;
+            background-color:#FCFAF1;
+        }
+        .prize_set{
+            height: 50px;
+        }
+        input[type="submit"]{
+            border: 1px solid #015595;
+            border-radius: 3px;
+            background-color: #015595;
+            width: 160px;
+            height: 28px;
+            margin-left: 40%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" style="margin: 0;height: 430px;width: 100%;">
+        <div class="discript">
+            <table style="width: 100%;" role="grid" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="discript_head">活动描述</td>
+                </tr>
+                <tr>
+                    <td class="discript_detail">活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描
+                        述活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述活动描述</td>
+                </tr>
+            </table>
+        </div>
+        <div class="head" style="width: 100%;height:30px; background-color: #E6E6E6; ">
+            <p style="margin: 0;">活动设置：</p>
+        </div>
+
+        <div class="activity">
+            <form action="http://localhost:8010/prize" onSubmit="return sub()">
+                <table style="width: 100%;" role="grid" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td>
+                            <p>活动联系人：<input type="text" name="name"/></p>
+                            <p>联系电话：<input type="text" name="tel"/></p>
+                            活动起止时间：<input type="text" id="start" name='starttime' class="form-control laydate-icon" />
+                            -<input type="text" id="end" name='endtime' class="form-control laydate-icon"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_level">
+                            <p style="margin: 0;">奖品一</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_set">
+                            <span>奖品名称：<input type="text" name="prize1"/></span>
+                            <span>中奖概率：<input type="text" name="odds1" id="prize1"/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_level">
+                            <p style="margin: 0;">奖品二</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_set">
+                            <span>奖品名称：<input type="text" name="prize2"/></span>
+                            <span>中奖概率：<input type="text" name="odds2" id="prize2"/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_level">
+                            <p style="margin: 0;">奖品三</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_set">
+                            <span>奖品名称：<input type="text" name="prize3"/></span>
+                            <span>中奖概率：<input type="text" name="odds3" id="prize3"/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_level">
+                            <p style="margin: 0;">奖品四</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_set">
+                            <span>奖品名称：<input type="text" name="prize4"/></span>
+                            <span>中奖概率：<input type="text" name="odds4" id="prize4"/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_level">
+                            <p style="margin: 0;">奖品五</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_set">
+                            <span>奖品名称：<input type="text" name="prize5"/></span>
+                            <span>中奖概率：<input type="text" name="odds5" id="prize5"/></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_level">
+                            <p style="margin: 0;">奖品六</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="prize_set">
+                            <span>奖品名称：<input type="text" name="prize6"/></span>
+                            <span>中奖概率：<input type="text" name="odds6" id="prize6"/></span>
+                        </td>
+                    </tr>
+                </table>
+                <input type="text" name="promotionid" style="display: none" id="promotionid"/>
+                <input type="text" name="vendorid" style="display: none" id="vendorid"/>
+                <input type="submit" value="保存" id="baocun" />
+            </form>
+        </div>
+        <input type="text" name="prizeTotal" id="prizeTotal" style="display:none; "/>
+        <!--<input type="button" id="abv" value="计算整体中奖率是否为100%"/>-->
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            document.getElementById('baocun').onclick = function(){
+                var sum = 0;
+                for(var i = 1 ; i < 7 ; ++i){
+                    sum += +document.getElementById('prize'+i).value;
+                }
+                document.getElementById('prizeTotal').value = sum;
+            }
+        }
+    </script>
+    <!--测试-->
+    <script>
+        function sub(){
+            var sum=document.getElementById("prizeTotal").value;
+            if(sum == 100)
+            {
+//                $("#baocun").addAttr("disabled");
+            }
+            else
+            {
+               alert("对不起，中奖率不足100%！");
+            }
+        }
+    </script>
+    <!--测试结束-->
+    <script>
+        $(function(){
+            var start = {
+                elem: '#start', //选择ID为START的input
+                format: 'YYYY/MM/DD', //自动生成的时间格式
+                min: laydate.now(), //设定最小日期为当前日期
+                max: '2099-06-16 23:59:59', //最大日期
+                istime: true, //必须填入时间
+                istoday: false,  //是否是当天
+                start: laydate.now(0,"YYYY/MM/DD"),  //设置开始时间为当前时间
+                choose: function(datas){
+                    end.min = datas; //开始日选好后，重置结束日的最小日期
+                    end.start = datas //将结束日的初始值设定为开始日
+                }
+            };
+            var end = {
+                elem: '#end',
+                format: 'YYYY/MM/DD',
+                min: laydate.now(),
+                max: '2099-06-16 23:59:59',
+                istime: true,
+                istoday: false,
+                start: laydate.now(0,"YYYY/MM/DD"),
+                choose: function(datas){
+                    start.max = datas; //结束日选好后，重置开始日的最大日期
+                }
+            };
+            laydate(start);
+            laydate(end);
+        })
+    </script>
+<script>
+    $(function () {
+        var str=location.href; //取得整个地址栏
+        var num=str.indexOf("?")
+        str=str.substr(num+1); //取得所有参数
+        var arr=str.split("&"); //各个参数放到数组里
+        num=arr[0].indexOf("=");
+        if(num>0){
+            var promotionid=arr[0].substr(num+1);
+        }
+        num=arr[1].indexOf("=");
+        if(num>0){
+            var vendorid= decodeURI(arr[1].substr(num+1));
+        }
+        $("#promotionid").val(promotionid);
+        $("#vendorid").val(vendorid);
+        alert(promotionid+vendorid);
+    })
+</script>
+</body>
+</html>
