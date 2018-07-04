@@ -136,8 +136,8 @@
                     </td>
                 </tr>
             </table>
-            <input type="text" name="promotionid" style="display: none" id="promotionid"/>
-            <input type="text" name="vendorid" style="display: none" id="vendorid"/>
+            <input type="text" name="promotionid" style="display: none" id="promotionid" value="1"/>
+            <input type="text" name="vendorid" style="display: none" id="vendorid" value="101721851"/>
             <input type="submit" value="保存" id="baocun" onclick="set()" />
 
         </form>
@@ -175,11 +175,10 @@
 
 <script>
     $(function () {
-        var vendorID=<s:property value="vendorID"/>;
-        var promotionid=<s:property value="promotionid"/>;
-        $("#promotionid").val(promotionid);
-        $("#vendorid").val(vendorID);
-        // alert(promotionid);
+        var vendorId=$("#vendorid").val();
+        var promotionId=$("#promotionid").val();
+        alert(vendorId);
+        alert(promotionId);
     })
     /*function  set() {
         /!*var name=$("#name").val();

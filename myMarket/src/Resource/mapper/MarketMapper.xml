@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.MarketMapper">
+<mapper namespace="com.ctcs.market.dao.MarketMapper">
     <!-- 企业的活动设置 -->
-    <insert id="addPrize" parameterType="com.ctcs.market.entity.Prize">
-        INSERT INTO T_BUSI_
-    </insert>
+    <!--<insert id="addPrize" parameterType="com.ctcs.market.entity.Prize">
+        INSERT INTO t_bust_prize(
+          promotionId,
+          vendorId,
+          starttime,
+          endtime,
+          prize1,
+          prize2,
+          prize3,
+          prize4,
+          prize5,
+          prize6,
+          odds1,
+          odds2,
+          odds3,
+          odds4,
+          odds5,
+          odds6
+        )
+        VALUES (
+          #{promotionId},
+          #{vendorId},
+          current_timestamp,
+          current_timestamp,
+          #{prize1},
+          #{prize2},
+          #{prize3},
+          #{prize4},
+          #{prize5},
+          #{odds1},
+          #{odds2},
+          #{odds3},
+          #{odds4},
+          #{odds5},
+          #{odds6}
+        )
+    </insert>-->
 
 
 </mapper>

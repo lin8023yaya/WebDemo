@@ -76,7 +76,7 @@
         <p style="margin: 0;">活动设置：</p>
     </div>
     <div class="activity">
-        <form action="" onsubmit="return set()">
+        <form action="" onsubmit="return false">
             <table style="width: 100%;" role="grid" cellspacing="0" cellpadding="0">
                 <tr>
 
@@ -149,42 +149,34 @@
                     </td>
                 </tr>
             </table>
-            <input type="text" name="promotionid" style="display: none" id="promotionid"/>
-            <input type="text" name="vendorid" style="display: none" id="vendorid"/>
-            <input type="submit" value="保存" id="baocun" onclick="set()"/>
+            <input type="text" name="promotionid" style="display: none" id="promotionid" value="1"/>
+            <input type="text" name="vendorid" style="display: none" id="vendorid" value="101721861"/>
+            <input type="submit" value="保存" id="baocun"/>
         </form>
         <input type="button" value="查看" id="chakan" onclick="chakan()"/>
     </div>
     <%--<input type="text" name="prizeTotal" id="prizeTotal" style="display:none; "/>--%>
     <input type="text" name="prizeTotal" id="prizeTotal"/><br/>
-    <input type="button" onclick="sub()" id="abv" value="计算整体中奖率是否为100%"/>
 </div>
 <script type="text/javascript">
-    window.onload = function () {
-        document.getElementById('baocun').onclick = function () {
+
+    $(function () {
+        $("#prizeTotal").blur(function () {
             var sum = 0;
             for (var i = 1; i < 7; ++i) {
                 sum += +document.getElementById('prize' + i).value;
             }
             document.getElementById('prizeTotal').value = sum;
-        }
-    }
-</script>
-<%--测试--%>
-<script>
-    function sub() {
-        var sum = $("#prozeTotal").val();
-        alert(sum);
-        if (sum != 100) {
-            alert("对不起,中奖率不足100");
-        }
-    }
-</script>
-<script>
-    $(function () {
+            alert(sum);
+            if (document.getElementById('prizeTotal').value != 1) {
+                alert("对不起,中奖率不足100%");
+            }else {
+                alert("奖项设置成功!");
+            }
+        });
+    });
 
-    })
-    function set() {
+    $("#baocun").click(function () {
         var prize1 = $("#prize11").val();
         var prize2 = $("#prize22").val();
         var prize3 = $("#prize33").val();
@@ -197,31 +189,39 @@
         var odds4 = $("#prize4").val();
         var odds5 = $("#prize5").val();
         var odds6 = $("#prize6").val();
-        var promotionid= $("#promotionid").val();
-        var vendorid= $("#vendorid").val();
-        alert(promotionid);
+        var promotionid = $("#promotionid").val();
+        var vendorid = $("#vendorid").val();
         alert(vendorid);
+        alert(prize2);
         $.ajax({
-            type:"get",
-            url:"/prize",
-            data:{vendorId:vendorid,
-                  promotionId:promotionid,
-                  prize1:prize1,
-                  prize1:prize2,
-                  prize1:prize3,
-                  prize1:prize4,
-                  prize1:prize5,
-                  prize1:prize6,
-                  odds1:odds1,
-                  odds1:odds2,
-                  odds1:odds3,
-                  odds1:odds4,
-                  odds1:odds5,
-                  odds1:odds6
+            type: "post",
+            url: "/market/prize",
+            data: {
+                vendorId: vendorid,
+                promotionId: promotionid,
+                prize1: prize1,
+                prize1: prize2,
+                prize1: prize3,
+                prize1: prize4,
+                prize1: prize5,
+                prize1: prize6,
+                odds1: odds1,
+                odds1: odds2,
+                odds1: odds3,
+                odds1: odds4,
+                odds1: odds5,
+                odds1: odds6
+            },
+            dataType: "json",
+            error: function () {
+                alert("传输失败!");
+            },
+            success: function (data) {
+                alert(data);
             }
-        })
-        alert("保存成功！")
-    }
+    });
+    });
+
 </script>
 </body>
 </html>

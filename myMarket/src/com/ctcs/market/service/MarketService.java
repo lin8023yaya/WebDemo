@@ -14,18 +14,18 @@ import javax.annotation.Resource;
  * @Date 2018/7/3 14:50
  * @Version 1.0
  **/
-@Service
-@Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
+//@Service
+//@Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
 public class MarketService {
-    @Resource
+   /* @Resource
     private MarketMapper marketMapper;
 
 
-    /*public Prize findMarket(Prize prize) {
+    *//*public Prize findMarket(Prize prize) {
         marketMapper.
-    }*/
+    }*//*
 
     public void addPrize(Prize prize) {
         marketMapper.addPrize(prize);
-    }
+    }*/
 }

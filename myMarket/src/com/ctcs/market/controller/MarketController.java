@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -23,23 +24,26 @@ import java.io.IOException;
 @Transactional
 @SuppressWarnings("all")
 public class MarketController {
-    @Resource
-    private MarketService marketService;
+    //@Resource
+    //private MarketService marketService;
     @RequestMapping("/prize")
     @ResponseBody
-    public String prize(Prize prize, HttpServletResponse response) throws IOException {
-        System.out.println("--------------"+prize.toString());
+    public String prize(@RequestParam Prize prize) throws IOException {
+
+        System.out.println("--------------" + prize.toString());
 //        Prize prize1 = marketService.findMarket(prize);
 //        System.out.println(prize1);
 //        if(prize1 == null){
-            System.out.println("*******if********");
-            marketService.addPrize(prize);
-            response.getWriter().write("保存成功！");
+        System.out.println("*******if********");
+        //      marketService.addPrize(prize);
+        //response.getWriter().write("保存成功！");
+        String str = "保存成功!";
 //        }else {
 //            System.out.println("-------else--------");
 //            marketService.updateMarket(prize);
 //            response.getWriter().write("更改成功！");
 //        }
-        return null;
+
+        return str;
     }
 }
