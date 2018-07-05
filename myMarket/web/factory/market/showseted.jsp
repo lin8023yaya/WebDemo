@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
@@ -16,12 +16,32 @@
     <script src="/factory/market/js/jquery-1.11.3.min.js"></script>
 </head>
 <body>
-<div style="height: 30px;width: 100%;background-color:#F8F8FF;"><h3 style="margin-top: 10px;margin-left: 0px;background-color:#FFFFFF;width: 135px;height: 100%">&nbsp;奖品配置记录</h3></div>
+<div style="height: 30px;width: 100%;background-color:#F8F8FF;"><h3
+        style="margin-top: 10px;margin-left: 0px;background-color:#FFFFFF;width: 135px;height: 100%">&nbsp;奖品配置记录</h3>
+</div>
 <div id="main"></div>
-<table  width="100%" border="1" cellspacing="0" cellpadding="0" style="margin-left: 0px;margin-top: 0px;font-family: 宋体;border: none" >
-    <thead style="background-color: #EEEEED;border: none;font-size: 14px"><tr><th>配置编号</th><th>奖品一</th><th>概率</th><th>奖品二</th><th>概率</th><th>奖品三</th><th>概率</th><th>奖品四</th><th>概率</th><th>奖品五</th><th>概率</th><th>奖品六</th><th>概率</th><th>操作</th></tr></thead>
+<table width="100%" border="1" cellspacing="0" cellpadding="0"
+       style="margin-left: 0px;margin-top: 0px;font-family: 宋体;border: none">
+    <thead style="background-color: #EEEEED;border: none;font-size: 14px">
+    <tr>
+        <th>配置编号</th>
+        <th>奖品一</th>
+        <th>概率</th>
+        <th>奖品二</th>
+        <th>概率</th>
+        <th>奖品三</th>
+        <th>概率</th>
+        <th>奖品四</th>
+        <th>概率</th>
+        <th>奖品五</th>
+        <th>概率</th>
+        <th>奖品六</th>
+        <th>概率</th>
+        <th>操作</th>
+    </tr>
+    </thead>
     <tbody style="font-weight: normal;border: none;font-size: 14px">
-    <c:forEach items="${showseted}" var="cord" varStatus="status"  >
+    <c:forEach items="${showseted}" var="cord" varStatus="status">
         <tr style="margin-top: 20px" class="${cord.id}">
             <th>${cord.id}</th>
             <th>${cord.prize1}</th>
@@ -44,16 +64,16 @@
 <script type="text/javascript">
     function shanchu(id) {
         $.ajax({
-            type:"GET",
-            url:"http://localhost:8010/deleteseted?id="+id,
-            success:function(){
+            type: "GET",
+            url: "http://localhost:8010/deleteseted?id=" + id,
+            success: function () {
                 alert("成功");
             },
-            error:function(){
+            error: function () {
                 //   alert("")
             }
         });
-        document.getElementsByClassName(id)[0].style.display="none";
+        document.getElementsByClassName(id)[0].style.display = "none";
     }
 </script>
 

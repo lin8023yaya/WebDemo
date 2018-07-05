@@ -6,8 +6,8 @@
         INSERT INTO t_bust_prize(
           promotionId,
           vendorId,
-          starttime,
-          endtime
+          startTime,
+          endTime,
           prize1,
           prize2,
           prize3,
@@ -24,8 +24,8 @@
         VALUES (
           #{promotionId},
           #{vendorId},
-          CURRENT_TIMESTAMP,
-          CURRENT_TIMESTAMP,
+          #{startTime},
+          #{endTime},
           #{prize1},
           #{prize2},
           #{prize3},

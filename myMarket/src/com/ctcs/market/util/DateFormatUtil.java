@@ -13,18 +13,9 @@ public class DateFormatUtil {
 
         private final static SimpleDateFormat SDF_DATE = new SimpleDateFormat("yyyy-MM-dd");
         private final static SimpleDateFormat SDF_TIME = new SimpleDateFormat("HH:mm:ss");
-        private final static SimpleDateFormat SDF_DB_DATE = new SimpleDateFormat("yyyyMMdd");
-        public static  String getDateTime(Date date){
-            return SDF_DATE.format(date) + " " + SDF_TIME.format(date);
-        }
-        public static  String getDateTime1(Date date){
-            return SDF_DATE.format(date) ;
-        }
-        public static String getDate(Date date) {
-            return SDF_DATE.format(date);
-        }
+        private final static SimpleDateFormat SDF_DB_DATE = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        public static String getDBDate(Date date){
+        public static String getDateTime(Date date){
             return SDF_DB_DATE.format(date);
         }
 }

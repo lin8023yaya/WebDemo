@@ -2,6 +2,7 @@ package com.ctcs.market.controller;
 
 import com.ctcs.market.entity.Prize;
 import com.ctcs.market.service.MarketService;
+import com.ctcs.market.util.DateFormatUtil;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +38,8 @@ public class MarketController {
     public Object prize(Prize prize, HttpServletResponse response) throws IOException {
 
         JSONObject jo = new JSONObject();
+        prize.setStartTime(DateFormatUtil.getDateTime(new Date()));
+        prize.setEndTime((DateFormatUtil.getDateTime(new Date())));
         //jo.put("result","保存成功！");
         String result = "";
         System.out.println("--------------" + prize.toString());

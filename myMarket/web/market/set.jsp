@@ -12,7 +12,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>set</title>
+    <title>设置活动</title>
     <script src="/js/jquery-1.11.3.js"></script>
     <style>
         table {
@@ -170,7 +170,7 @@
             alert(sum);
             if (document.getElementById('prizeTotal').value != 1) {
                 alert("对不起,中奖率不足100%");
-            }else {
+            } else {
                 alert("奖项设置成功!");
             }
         });
@@ -219,8 +219,14 @@
             error: function () {
                 alert("传输失败!");
             }
+        });
     });
-    });
+
+    function chakan() {
+        var vendorid = $("#vendorid").val();
+        var promotionid = $("#promotionid").val();
+        window.location.href = "showset.jsp?vendorId="+vendorid+"&promotionId="+promotionid;
+    }
 
 </script>
 </body>
