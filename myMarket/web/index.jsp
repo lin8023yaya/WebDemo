@@ -13,9 +13,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>做自己的王</title>
+    <title>白胡子-Newgate</title>
 </head>
 <body>
+<div>
     一杯敬明天,一杯敬过往!
+</div>
+
 </body>
 </html>

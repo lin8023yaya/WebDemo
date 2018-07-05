@@ -14,18 +14,30 @@ import javax.annotation.Resource;
  * @Date 2018/7/3 14:50
  * @Version 1.0
  **/
-//@Service
-//@Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
+@Service("marketService")
+@Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly = true)
 public class MarketService {
-   /* @Resource
+    @Resource
     private MarketMapper marketMapper;
 
 
-    *//*public Prize findMarket(Prize prize) {
+    /*public Prize findMarket(Prize prize) {
         marketMapper.
-    }*//*
-
-    public void addPrize(Prize prize) {
-        marketMapper.addPrize(prize);
     }*/
+
+    public String addPrize(Prize prize) {
+        int resultS = 0;
+        System.out.println(prize.toString() + "service");
+        try {
+            resultS = marketMapper.addPrize(prize);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if (resultS == 1) {
+            return "保存成功！";
+        } else {
+            return "保存失败！";
+        }
+    }
 }

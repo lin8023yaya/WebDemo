@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ctcs.market.dao.MarketMapper">
     <!-- 企业的活动设置 -->
-    <!--<insert id="addPrize" parameterType="com.ctcs.market.entity.Prize">
+    <insert id="addPrize" parameterType="com.ctcs.market.entity.Prize">
         INSERT INTO t_bust_prize(
           promotionId,
           vendorId,
           starttime,
-          endtime,
+          endtime
           prize1,
           prize2,
           prize3,
@@ -24,13 +24,14 @@
         VALUES (
           #{promotionId},
           #{vendorId},
-          current_timestamp,
-          current_timestamp,
+          CURRENT_TIMESTAMP,
+          CURRENT_TIMESTAMP,
           #{prize1},
           #{prize2},
           #{prize3},
           #{prize4},
           #{prize5},
+          #{prize6},
           #{odds1},
           #{odds2},
           #{odds3},
@@ -38,7 +39,7 @@
           #{odds5},
           #{odds6}
         )
-    </insert>-->
+    </insert>
 
 
 </mapper>

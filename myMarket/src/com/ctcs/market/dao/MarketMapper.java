@@ -3,7 +3,8 @@ package com.ctcs.market.dao;
 import com.ctcs.market.entity.Prize;
 import org.springframework.stereotype.Repository;
 
-//@Repository
+@Repository()
 public interface MarketMapper {
-  //  void addPrize(Prize prize);
+    //增加营销活动
+    int addPrize(Prize prize);
 }

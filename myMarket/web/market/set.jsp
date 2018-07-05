@@ -200,24 +200,24 @@
                 vendorId: vendorid,
                 promotionId: promotionid,
                 prize1: prize1,
-                prize1: prize2,
-                prize1: prize3,
-                prize1: prize4,
-                prize1: prize5,
-                prize1: prize6,
+                prize2: prize2,
+                prize3: prize3,
+                prize4: prize4,
+                prize5: prize5,
+                prize6: prize6,
                 odds1: odds1,
-                odds1: odds2,
-                odds1: odds3,
-                odds1: odds4,
-                odds1: odds5,
-                odds1: odds6
+                odds2: odds2,
+                odds3: odds3,
+                odds4: odds4,
+                odds5: odds5,
+                odds6: odds6
             },
             dataType: "json",
+            success: function (data) {
+                alert(data.result);
+            },
             error: function () {
                 alert("传输失败!");
-            },
-            success: function (data) {
-                alert(data);
             }
     });
     });
