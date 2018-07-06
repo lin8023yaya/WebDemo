@@ -149,7 +149,7 @@
                     </td>
                 </tr>
             </table>
-            <input type="text" name="promotionid" style="display: none" id="promotionid" value="1"/>
+            <input type="text" name="promotionid" style="display: none" id="promotionid" value="2"/>
             <input type="text" name="vendorid" style="display: none" id="vendorid" value="101721861"/>
             <input type="submit" value="保存" id="baocun"/>
         </form>
@@ -225,7 +225,22 @@
     function chakan() {
         var vendorid = $("#vendorid").val();
         var promotionid = $("#promotionid").val();
-        window.location.href = "showset.jsp?vendorId="+vendorid+"&promotionId="+promotionid;
+        $.ajax({
+            type: "post",
+            url: "/market/showPrize",
+            data: {
+                vendorId: vendorid,
+                promotionId: promotionid
+            },
+            dataType: "json",
+            success: function (data) {
+                alert(data.result);
+                window.open("showset.jsp");
+            },
+            error: function () {
+                alert("查看失败!");
+            }
+        })
     }
 
 </script>

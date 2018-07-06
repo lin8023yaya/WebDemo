@@ -13,7 +13,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>白胡子-Newgate</title>
+    <title>Newgate</title>
 </head>
 <body>
 <div>
