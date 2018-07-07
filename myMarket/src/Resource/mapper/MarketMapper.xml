@@ -3,59 +3,81 @@
 <mapper namespace="com.ctcs.market.dao.MarketMapper">
     <!-- 企业的活动设置 -->
     <insert id="addPrize" parameterType="com.ctcs.market.entity.Prize">
-        INSERT INTO t_bust_prize(
-          promotionId,
-          vendorId,
-          startTime,
-          endTime,
-          prize1,
-          prize2,
-          prize3,
-          prize4,
-          prize5,
-          prize6,
-          odds1,
-          odds2,
-          odds3,
-          odds4,
-          odds5,
-          odds6
+        INSERT INTO t_bust_prize (
+            promotionId,
+            vendorId,
+            startTime,
+            endTime,
+            prize1,
+            prize2,
+            prize3,
+            prize4,
+            prize5,
+            prize6,
+            odds1,
+            odds2,
+            odds3,
+            odds4,
+            odds5,
+            odds6
         )
         VALUES (
-          #{promotionId},
-          #{vendorId},
-          #{startTime},
-          #{endTime},
-          #{prize1},
-          #{prize2},
-          #{prize3},
-          #{prize4},
-          #{prize5},
-          #{prize6},
-          #{odds1},
-          #{odds2},
-          #{odds3},
-          #{odds4},
-          #{odds5},
-          #{odds6}
+            #{promotionId},
+            #{vendorId},
+            #{startTime},
+            #{endTime},
+            #{prize1},
+            #{prize2},
+            #{prize3},
+            #{prize4},
+            #{prize5},
+            #{prize6},
+            #{odds1},
+            #{odds2},
+            #{odds3},
+            #{odds4},
+            #{odds5},
+            #{odds6}
         )
     </insert>
     <!-- 查看新增的企业活动 -->
     <select id="showPrize" parameterType="com.ctcs.market.entity.Prize"
-    resultType="com.ctcs.market.entity.Prize">
-        SELECT id,prize1,
-          prize2,
-          prize3,
-          prize4,
-          prize5,
-          prize6,
-          odds1,
-          odds2,
-          odds3,
-          odds4,
-          odds5,
-          odds6
-        FROM t_bust_prize WHERE vendorid = #{vendorId} and promotionid = #{promotionId}
+            resultType="com.ctcs.market.entity.Prize">
+        SELECT
+            id,
+            prize1,
+            prize2,
+            prize3,
+            prize4,
+            prize5,
+            prize6,
+            odds1,
+            odds2,
+            odds3,
+            odds4,
+            odds5,
+            odds6
+        FROM t_bust_prize
+        WHERE vendorid = #{vendorId} AND promotionid = #{promotionId}
     </select>
-
+    <update id="updateEndTime" parameterType="com.ctcs.market.entity.Prize">
+        UPDATE t_bust_prize
+        SET endtime = #{endTime}
+        WHERE vendorid = #{vendorId} AND promotionid = #{promotionId}
+    </update>
+    <delete id="delPrize" parameterType="com.ctcs.market.entity.Prize">
+        DELETE FROM t_bust_prize
+        WHERE id = #{id}
+    </delete>
+    <insert id="redSet" parameterType="com.ctcs.market.entity.Redpacket">
+        INSERT INTO redpacketinfo (
+            vendorid, redtype, redmoney,moneytotal, rednum)
+        VALUES (#{vendorId}, #{redType}, #{redMoney}, #{moneyTotal},#{redNum})
+    </insert>
+    <update id="updatePrize" parameterType="com.ctcs.market.entity.Prize">
+        UPDATE t_bust_prize
+        SET endtime=#{endTime}, prize1 =#{prize1}, prize2=#{prize2},prize3=#{prize3},prize4=#{prize4},
+            prize5=#{prize5},prize6=#{prize6},odds1=#{odds1},odds2=#{odds3},odds3=#{odds3},odds4=#{odds4},odds5=#{odds5},odds6=#{odds6}
+        WHERE vendorid = #{vendorId} AND promotionid = #{promotionId}
+    </update>
 </mapper>

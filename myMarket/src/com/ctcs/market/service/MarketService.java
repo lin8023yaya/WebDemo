@@ -2,6 +2,7 @@ package com.ctcs.market.service;
 
 import com.ctcs.market.dao.MarketMapper;
 import com.ctcs.market.entity.Prize;
+import com.ctcs.market.entity.Redpacket;
 import com.ctcs.market.entity.Result;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -37,18 +38,72 @@ public class MarketService {
         return result;
     }
 
-    public String showPrize(Prize prize) {
-
+    public Result showPrize(Prize prize) {
+        Result result = new Result();
         Prize p = new Prize();
-        try {
+        try{
             p = marketMapper.showPrize(prize);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        //System.out.println("2");
+        if (p != null) {
+            result.setStatus(1);
+            result.setMessage("点击查看!");
+            result.setData(p);
+        } else {
+            result.setStatus(0);
+            result.setMessage("请联系后台!");
+        }
+        return result;
+    }
+
+    public Result updateEndTime(Prize prize) {
+        //System.out.println("2-1");
+        Result result =new Result();
+        int rowAffect = 0;
+        try {
+            rowAffect = marketMapper.updateEndTime(prize);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (p != null) {
-            return "点击进行查看！";
-        } else {
-            return "请联系后台！";
+        if (rowAffect == 1){
+            result.setStatus(1);
+            result.setMessage("时间更新成功!");
+        }else {
+            result.setStatus(0);
+            result.setMessage("时间更新失败!");
         }
+        return result;
+    }
+
+    public Result delPrize(Prize prize) {
+        Result result = new Result();
+        int rowAffect = marketMapper.delPrize(prize);
+        if(rowAffect == 1){
+            result.setMessage("删除成功!");
+        }else {
+            result.setMessage("请联系后台!");
+        }
+        return result;
+    }
+
+
+    public Result updatePrize(Prize prize) {
+        Result result =new Result();
+        int rowAffect = 0;
+        try {
+            rowAffect = marketMapper.updatePrize(prize);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (rowAffect == 1){
+            result.setStatus(1);
+            result.setMessage("数据更新成功!");
+        }else {
+            result.setStatus(0);
+            result.setMessage("请联系后台!");
+        }
+        return result;
     }
 }

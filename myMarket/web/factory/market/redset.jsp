@@ -24,7 +24,8 @@
 <div style="height: 30px;width: 100%;background-color:#F8F8FF;"><h3 style="margin-top: 0px;margin-left: 0px;background-color:#FFFFFF;width: 105px;height: 100%">&nbsp;活动设置</h3></div>
 <br /><br /><br /><br />
 <div style="text-align: center;">
-    红包种类：固定红包：<input type="radio" name="radio" value="1" onclick="change(this.value)"/>&nbsp;随机红包：<input type="radio" name="radio" value="2" onclick="change(this.value)"/>
+    红包种类：固定红包：<input type="radio" name="radio" value="1" onclick="change(this.value)"/>&nbsp;
+    随机红包：<input type="radio" name="radio" value="2" onclick="change(this.value)"/>
     <br /><br /><br /><br />
     <input type="text" id="vendorid" style="display: none">
     <div id="1" style="display: none;">
@@ -57,13 +58,13 @@
 
     }
 
-    $(function () {
-        var vendorID=<s:property value="vendorID"/>;
-        // var promotionid=<s:property value="promotionid"/>;
+    /*$(function () {
+        var vendorID=<%--<s:property value="vendorID"/>--%>;
+        // var promotionid=<%--<s:property value="promotionid"/>--%>;
         // $("#promotionid").val(promotionid);
         $("#vendorid").val(vendorID);
 
-    })
+    })*/
     function  redset() {
         var name=null;
         var tel=null;

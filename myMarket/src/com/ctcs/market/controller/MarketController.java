@@ -1,6 +1,7 @@
 package com.ctcs.market.controller;
 
 import com.ctcs.market.entity.Prize;
+import com.ctcs.market.entity.Redpacket;
 import com.ctcs.market.entity.Result;
 import com.ctcs.market.service.MarketService;
 import com.ctcs.market.util.DateFormatUtil;
@@ -39,53 +40,61 @@ public class MarketController {
 
     @RequestMapping("/prize")
     @ResponseBody
-    public Object prize(Prize prize){
+    public Object prize(Prize prize) {
 
         Result result = null;
-        prize.setStartTime(DateFormatUtil.getDateTime(new Date()));
-        prize.setEndTime((DateFormatUtil.getDateTime(new Date())));
         System.out.println("--------------");
-//        Prize prize1 = marketService.findMarket(prize);
-//        System.out.println(prize1);
-//        if(prize1 == null){
-        System.out.println("*******if********");
-        try {
-            result = marketService.addPrize(prize);
-        }catch (Exception e){
-            e.printStackTrace();
+        result = marketService.showPrize(prize);
+        System.out.println("1");
+        if (result.getData() == null) {
+            prize.setStartTime(DateFormatUtil.getDateTime(new Date()));
+            prize.setEndTime((DateFormatUtil.getDateTime(new Date())));
+            System.out.println("*******if********");
+            try {
+                result = marketService.addPrize(prize);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            System.out.println("-------else--------");
+            prize.setEndTime((DateFormatUtil.getDateTime(new Date())));
+            result = marketService.updatePrize(prize);
         }
-
-//        }else {
-//            System.out.println("-------else--------");
-//            marketService.updateMarket(prize);
-//            response.getWriter().write("更改成功！");
-//        }
-        //System.out.println(jo.toString());
-        //return jo.toString();
-        //return "123";
-
         return result;
     }
 
     @RequestMapping("/showPrize")
     @ResponseBody
-    public Object showset( Prize prize,
+    public Result showset(Prize prize,
                           HttpServletRequest request,
-                          HttpServletResponse response){
-        JSONObject jo = new JSONObject();
+                          HttpServletResponse response) {
+        Result result = null;
         prize.setEndTime(DateFormatUtil.getDateTime(new Date()));
-        //marketService.updateEndTime(prize);
-        String result = marketService.showPrize(prize);
-        List<Prize> showset = new ArrayList<>();
-        showset.add(prize);
-
+        //System.out.println("1-1");
+        this.marketService.updateEndTime(prize);
         try {
-            request.getSession().setAttribute("showset",showset);
-            jo.put("result",result);
+            result = marketService.showPrize(prize);
         } catch (Exception e) {
-            jo.put("result",result);
             e.printStackTrace();
         }
-        return jo.toString();
+        List<Prize> showset = new ArrayList<>();
+        Prize data = (Prize) result.getData();
+        showset.add(data);
+        //System.out.println("1-2");
+        request.getSession().setAttribute("showset", showset);
+        return result;
     }
+
+    @RequestMapping("delPrize")
+    @ResponseBody
+    public Result delPrize(Prize prize, HttpServletRequest request) {
+        Result result = null;
+        result = marketService.delPrize(prize);
+        return result;
+    }
+
+
+
+
 }

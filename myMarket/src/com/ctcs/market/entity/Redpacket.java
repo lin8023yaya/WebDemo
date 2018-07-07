@@ -8,13 +8,13 @@ package com.ctcs.market.entity;
  **/
 public class Redpacket {
     private int id;
-    private long vendorid;
-    private Integer redtype;
-    private double redmoney;
-    private double moneyfloor;
-    private double moneyupper;
-    private double moneytotal;
-    private Integer rednum;
+    private long vendorId;
+    private Integer redType;
+    private double redMoney;
+    private double moneyFloor;
+    private double moneyUpper;
+    private double moneyTotal;
+    private Integer redNum;
 
     public int getId() {
         return id;
@@ -24,59 +24,73 @@ public class Redpacket {
         this.id = id;
     }
 
-    public long getVendorid() {
-        return vendorid;
+    public long getVendorId() {
+        return vendorId;
     }
 
-    public void setVendorid(long vendorid) {
-        this.vendorid = vendorid;
+    public void setVendorId(long vendorId) {
+        this.vendorId = vendorId;
     }
 
-    public Integer getRedtype() {
-        return redtype;
+    public Integer getRedType() {
+        return redType;
     }
 
-    public void setRedtype(Integer redtype) {
-        this.redtype = redtype;
+    public void setRedType(Integer redType) {
+        this.redType = redType;
     }
 
-    public double getRedmoney() {
-        return redmoney;
+    public double getRedMoney() {
+        return redMoney;
     }
 
-    public void setRedmoney(double redmoney) {
-        this.redmoney = redmoney;
+    public void setRedMoney(double redMoney) {
+        this.redMoney = redMoney;
     }
 
-    public double getMoneyfloor() {
-        return moneyfloor;
+    public double getMoneyFloor() {
+        return moneyFloor;
     }
 
-    public void setMoneyfloor(double moneyfloor) {
-        this.moneyfloor = moneyfloor;
+    public void setMoneyFloor(double moneyFloor) {
+        this.moneyFloor = moneyFloor;
     }
 
-    public double getMoneyupper() {
-        return moneyupper;
+    public double getMoneyUpper() {
+        return moneyUpper;
     }
 
-    public void setMoneyupper(double moneyupper) {
-        this.moneyupper = moneyupper;
+    public void setMoneyUpper(double moneyUpper) {
+        this.moneyUpper = moneyUpper;
     }
 
-    public double getMoneytotal() {
-        return moneytotal;
+    public double getMoneyTotal() {
+        return moneyTotal;
     }
 
-    public void setMoneytotal(double moneytotal) {
-        this.moneytotal = moneytotal;
+    public void setMoneyTotal(double moneyTotal) {
+        this.moneyTotal = moneyTotal;
     }
 
-    public Integer getRednum() {
-        return rednum;
+    public Integer getRedNum() {
+        return redNum;
     }
 
-    public void setRednum(Integer rednum) {
-        this.rednum = rednum;
+    public void setRedNum(Integer redNum) {
+        this.redNum = redNum;
+    }
+
+    @Override
+    public String toString() {
+        return "Redpacket{" +
+                "id=" + id +
+                ", vendorId=" + vendorId +
+                ", redType=" + redType +
+                ", redMoney=" + redMoney +
+                ", moneyFloor=" + moneyFloor +
+                ", moneyUpper=" + moneyUpper +
+                ", moneyTotal=" + moneyTotal +
+                ", redNum=" + redNum +
+                '}';
     }
 }

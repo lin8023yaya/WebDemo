@@ -23,6 +23,7 @@
     <thead style="background-color: #EEEEED;border: none;font-size: 14px">
     <tr>
         <th>配置编号</th>
+
         <th>奖品1</th>
         <th>概率</th>
         <th>奖品2</th>
@@ -54,13 +55,26 @@
             <th>${cord.odds5}</th>
             <th>${cord.prize6}</th>
             <th>${cord.odds6}</th>
-            <th><p style="color: #0000cc;cursor: pointer" onclick="shanchu(this.id)">删除配置</p></th>
+            <th><p style="color: #0000cc;cursor: pointer" onclick="shanchu(this.id)" id="${cord.id}">删除配置</p></th>
         </tr>
     </c:forEach>
     </tbody>
     <script>
-        function shanchu() {
+        function shanchu(id) {
             alert("删除!");
+            $.ajax({
+                type:"get",
+                url:"/market/delPrize?id="+id,
+                dataType:"json",
+                success:function (result) {
+                    alert(result.message);
+                    window.location.href = "set.jsp";
+                },
+                error:function (result) {
+                    alert(result.message)
+                }
+            })
+            document.getElementsByClassName(id)[0].style.display = "none";
         }
     </script>
 </table>

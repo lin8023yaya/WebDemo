@@ -13,11 +13,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Newgate</title>
+    <title>一杯敬明天,一杯敬过往!</title>
 </head>
 <body>
 <div>
-    一杯敬明天,一杯敬过往!
+    <style>
+        #bodybg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            z-index: 0;
+        }
+        #bodybg .stretch { width:100%;height:100%;}
+    </style>
+
+    <!--/背景拉伸-->
+    <div id="bodybg">
+        <img src="/img/Newgate.jpg"class="stretch" />
+    </div>
 </div>
 
 </body>

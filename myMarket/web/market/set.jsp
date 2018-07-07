@@ -213,11 +213,11 @@
                 odds6: odds6
             },
             dataType: "json",
-            success: function (data) {
-                alert(data.result);
+            success: function (result) {
+                alert(result.message);
             },
             error: function () {
-                alert("传输失败!");
+                alert(result.message);
             }
         });
     });
@@ -233,12 +233,12 @@
                 promotionId: promotionid
             },
             dataType: "json",
-            success: function (data) {
-                alert(data.result);
+            success: function (result) {
+                alert(result.message);
                 window.open("showset.jsp");
             },
-            error: function () {
-                alert("查看失败!");
+            error: function (result) {
+                alert(result.message);
             }
         })
     }
