@@ -6,16 +6,26 @@ package com.ctcs.market.entity;
  * @Date 2018/6/14 14:14
  * @Version 1.0
  **/
-public class Batchbound extends Redpacket{
+public class Batchbound extends Redpacket {
     private Integer Bid;
-    private Integer redpacketInfoid;
-    private Long productid;
+    private Long batchId;
+    private Integer redpacketInfoId;
+    private Long productId;
     private String name;
     private Long tel;
     private String startTime;
     private String endTime;
     private Integer status;
     private double sendMoney;
+
+
+    public Long getBatchId() {
+        return batchId;
+    }
+
+    public void setBatchId(Long batchId) {
+        this.batchId = batchId;
+    }
 
     public Integer getBid() {
         return Bid;
@@ -25,20 +35,21 @@ public class Batchbound extends Redpacket{
         Bid = bid;
     }
 
-    public Integer getRedpacketInfoid() {
-        return redpacketInfoid;
+
+    public Integer getRedpacketInfoId() {
+        return redpacketInfoId;
     }
 
-    public void setRedpacketInfoid(Integer redpacketInfoid) {
-        this.redpacketInfoid = redpacketInfoid;
+    public void setRedpacketInfoId(Integer redpacketInfoId) {
+        this.redpacketInfoId = redpacketInfoId;
     }
 
-    public Long getProductid() {
-        return productid;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProductid(Long productid) {
-        this.productid = productid;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getName() {

@@ -1,5 +1,7 @@
 package com.ctcs.market.controller;
 
+import com.ctcs.market.entity.Batchbound;
+import com.ctcs.market.entity.MarketCode;
 import com.ctcs.market.entity.Redpacket;
 import com.ctcs.market.entity.Result;
 import com.ctcs.market.service.RedpacketService;
@@ -30,6 +32,18 @@ public class RedpacketController {
         System.out.println(redpacket.toString());
 
         result = redpacketService.redSet(redpacket);
+        return result;
+    }
+    @ResponseBody
+    @RequestMapping("batchbound")
+    public Result batchbound(Batchbound batchbound){
+        Result result = null;
+        System.out.println("ok");
+        try {
+            result = redpacketService.batchBound(batchbound);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return result;
     }
 }

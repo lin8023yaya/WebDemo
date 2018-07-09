@@ -7,4 +7,12 @@
             vendorid, redtype, redmoney,moneytotal, rednum)
         VALUES (#{vendorId}, #{redType}, #{redMoney}, #{moneyTotal},#{redNum})
     </insert>
+    <insert id="batchBound" parameterType="com.ctcs.market.entity.Batchbound">
+        INSERT INTO batchbound(
+        vendorid, batchid, name, tel, starttime, endtime, status, redpacketinfoid)
+        VALUES(
+        #{vendorId},#{batchId},#{name},#{tel},
+        #{startTime},#{endTime},#{status},#{redpacketInfoId}
+        )
+    </insert>
 </mapper>

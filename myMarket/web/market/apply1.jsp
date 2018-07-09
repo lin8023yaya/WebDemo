@@ -135,8 +135,8 @@
     })
 </script>
 <script>
-    var vendorID=<s:property value="vendorID"/>;
-    var typeId=<s:property value="typeId"/>;
+    var vendorID=101721851;
+    var typeId=6666443229868;
     // alert(typeId);
     function apply() {
         var radiovalue=$("input[type='radio']:checked").val();
@@ -177,7 +177,7 @@
             var starttime=$("#start1").val();
             var endtime=$("#end1").val();
             $.ajax({
-                url: "http://localhost:8010/redpacket/batchbound",
+                url: "/redpacket/batchbound",
                 data:{productid:typeId,
                     batchid:batch,
                     vendorid:vendorID,
@@ -189,12 +189,16 @@
                 },
                 dataType:'json',
                 // processData: false,
-                type:'get',
+                type:'post',
                 success:function(result){
+                    if(result.status==1){
                         alert(result.message);
+                    }else{
+                        alert(result.message);
+                    }
                 },
-                error:function(result) {
-                    alert(result.message);
+                error:function() {
+                    alert("请求失败！");
                 }
             })
 

@@ -1,5 +1,6 @@
 package com.ctcs.market.dao;
 
+import com.ctcs.market.entity.Batchbound;
 import com.ctcs.market.entity.Redpacket;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface RedpacketMapper {
 
     int redSet(Redpacket redpacket);
+
+    int batchBound(Batchbound batchbound);
 }
