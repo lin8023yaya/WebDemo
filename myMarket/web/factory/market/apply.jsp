@@ -43,7 +43,8 @@
 
 
 
-    活动种类：普通活动：<input type="radio" name="radio" value="1" onclick="change(this.value)"/>&nbsp;红包活动：<input type="radio" name="radio" value="2" onclick="change(this.value)"/>
+    活动种类：普通活动：<input type="radio" name="radio" value="1" onclick="change(this.value)"/>
+    &nbsp;红包活动：<input type="radio" name="radio" value="2" onclick="change(this.value)"/>
     <div style="display: none" id="1">
         <br />
         <p>活动的奖品编号: <input type="text" name="num" id="prizeid"/></p>
@@ -55,7 +56,7 @@
         <br />
         <br />
         <button onclick="apply()" id="but0">提交</button>
-
+        <button onclick="chakan()" id="chakan0">查看配置活动</button>
     </div>
 
 
@@ -70,7 +71,7 @@
         <br />
         <br />
         <button onclick="apply()" id="but">提交</button>
-
+        <button onclick="chakan()" id="chakan1">查看配置活动</button>
     </div>
 
 
@@ -154,10 +155,19 @@
                // processData: false,
                 type:'get',
                 jsonpCallback:"callback",
-                data:{typeid:typeId,batchid:batch,vendorid:vendorID,starttime:starttime,endtime:endtime,name:name,tel:tel,prizeid:prizeid},
+                data:{
+                    typeid:typeId,
+                    batchid:batch,
+                    vendorid:vendorID,
+                    starttime:starttime,
+                    endtime:endtime,
+                    name:name,
+                    tel:tel,
+                    prizeid:prizeid},
                 success:function(data){
                     if(data.result==1){
                         alert("设置成功");
+                        window.location.href="/market/apply.jsp";
                     }
                 },
                 error:function(XMLHttpRequest, textStatus, errorThrown) {
@@ -177,8 +187,9 @@
             var starttime=$("#start1").val();
             var endtime=$("#end1").val();
             $.ajax({
-                url: "http://localhost:8010/redpacket/batchbound",
-                data:{productid:typeId,
+                url: "http://localhost:8010/marketcode",
+                data:{
+                    productid:typeId,
                     batchid:batch,
                     vendorid:vendorID,
                     starttime:starttime,
@@ -187,14 +198,21 @@
                     tel:tel,
                     redpacketinfoid:redpacketinfoid
                 },
-                dataType:'json',
+                dataType:'jsonp',
                 // processData: false,
                 type:'get',
-                success:function(result){
-                        alert(result.message);
+                jsonpCallback:"callback",
+                success:function(data){
+                    if(data.result==1){
+                        alert("设置成功");
+                        window.location.href="/market/set.jsp";
+                    }
                 },
-                error:function(result) {
-                    alert(result.message);
+                error:function(XMLHttpRequest, textStatus, errorThrown) {
+                    //alert(XMLHttpRequest.status);
+                    // alert(XMLHttpRequest.readyState);
+                    //alert(textStatus);
+                    alert("系统繁忙，请稍后再试");
                 }
             })
 

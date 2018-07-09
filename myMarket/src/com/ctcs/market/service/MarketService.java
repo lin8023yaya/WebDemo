@@ -1,6 +1,7 @@
 package com.ctcs.market.service;
 
 import com.ctcs.market.dao.MarketMapper;
+import com.ctcs.market.entity.MarketCode;
 import com.ctcs.market.entity.Prize;
 import com.ctcs.market.entity.Redpacket;
 import com.ctcs.market.entity.Result;
@@ -106,4 +107,18 @@ public class MarketService {
         }
         return result;
     }
+
+    public Result marketCode(MarketCode marketCode) {
+        Result result = new Result();
+        int rowAffects = marketMapper.marketCode(marketCode);
+        if (rowAffects == 1) {
+            result.setStatus(1);
+            result.setMessage("活动申请成功!");
+        }else {
+        result.setStatus(1);
+        result.setMessage("请联系后台!");
+        }
+        return result;
+    }
+
 }

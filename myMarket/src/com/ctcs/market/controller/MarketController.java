@@ -1,5 +1,6 @@
 package com.ctcs.market.controller;
 
+import com.ctcs.market.entity.MarketCode;
 import com.ctcs.market.entity.Prize;
 import com.ctcs.market.entity.Redpacket;
 import com.ctcs.market.entity.Result;
@@ -93,6 +94,17 @@ public class MarketController {
         result = marketService.delPrize(prize);
         return result;
     }
+
+    @RequestMapping("marketCode")
+    @ResponseBody
+    public Result marketCode(MarketCode marketCode){
+        Result result = null;
+        marketCode.setStatus(0);
+        result = marketService.marketCode(marketCode);
+        return result;
+    }
+
+
 
 
 

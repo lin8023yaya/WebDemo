@@ -80,4 +80,12 @@
             prize5=#{prize5},prize6=#{prize6},odds1=#{odds1},odds2=#{odds3},odds3=#{odds3},odds4=#{odds4},odds5=#{odds5},odds6=#{odds6}
         WHERE vendorid = #{vendorId} AND promotionid = #{promotionId}
     </update>
+    <insert id="marketCode" parameterType="com.ctcs.market.entity.MarketCode">
+        INSERT INTO t_busi_marketcode(
+            vendorid, status, starttime, endtime, name,promotionid,
+            tel, prizeid, typeid, batchid) VALUES(
+            #{vendorId},#{status},#{startTime},#{endTime},#{name},
+            #{promotionId},#{tel},#{prizeId},#{typeId},#{batchId}
+        )
+    </insert>
 </mapper>

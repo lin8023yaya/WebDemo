@@ -1,5 +1,6 @@
 package com.ctcs.market.dao;
 
+import com.ctcs.market.entity.MarketCode;
 import com.ctcs.market.entity.Prize;
 import com.ctcs.market.entity.Redpacket;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,6 @@ public interface MarketMapper {
     int redSet(Redpacket redpacket);
     //更新修改的营销活动
     int updatePrize(Prize prize);
+    //企业申请活动
+    int marketCode(MarketCode marketCode);
 }
