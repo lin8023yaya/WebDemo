@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @ClassName MarketService
@@ -120,5 +121,44 @@ public class MarketService {
         }
         return result;
     }
+
+
+    public Result toVrecord(Long vendorID) {
+
+        Result result = new Result();
+        List<MarketCode> marketCodes = null;
+        try {
+            marketCodes = marketMapper.toVrecord(vendorID);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (marketCodes != null) {
+            result.setStatus(1);
+            result.setMessage("查询成功!");
+            result.setData(marketCodes);
+        }else{
+            result.setStatus(0);
+            result.setMessage("请联系后台");
+        }
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

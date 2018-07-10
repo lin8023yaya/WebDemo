@@ -5,6 +5,8 @@ import com.ctcs.market.entity.Prize;
 import com.ctcs.market.entity.Redpacket;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository()
 public interface MarketMapper {
     //增加营销活动
@@ -21,4 +23,6 @@ public interface MarketMapper {
     int updatePrize(Prize prize);
     //企业申请活动
     int marketCode(MarketCode marketCode);
+
+    List<MarketCode> toVrecord(Long vendorID);
 }

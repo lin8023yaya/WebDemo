@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ctcs.market.dao.RedpacketMapper">
+
+    <insert id="redSet" parameterType="com.ctcs.market.entity.Redpacket">
+        INSERT INTO redpacketinfo (
+            vendorid, redtype, redmoney,moneytotal, rednum)
+        VALUES (#{vendorId}, #{redType}, #{redMoney}, #{moneyTotal},#{redNum})
+    </insert>
+    <insert id="batchBound" parameterType="com.ctcs.market.entity.Batchbound">
+        INSERT INTO batchbound(
+        vendorid, batchid, name, tel, starttime, endtime, status, redpacketinfoid)
+        VALUES(
+        #{vendorId},#{batchId},#{name},#{tel},
+        #{startTime},#{endTime},#{status},#{redpacketInfoId}
+        )
+    </insert>
+</mapper>

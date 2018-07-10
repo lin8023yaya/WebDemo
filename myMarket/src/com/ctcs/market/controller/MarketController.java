@@ -11,10 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -103,8 +100,35 @@ public class MarketController {
         result = marketService.marketCode(marketCode);
         return result;
     }
-
-
+    @ResponseBody
+    @RequestMapping("vrecord")
+    public Result toVrecord(Long vendorId,HttpServletRequest request){
+        Result result = null;
+        try {
+            result = marketService.toVrecord(vendorId);
+            List<MarketCode> marketCodes = (List<MarketCode>) result.getData();
+            List<MarketCode> vrecord = new ArrayList<>();
+            for (MarketCode marketCode1:marketCodes) {
+                //name,tel,starttime,endtime,batchid,prizeid,status,promotionid
+                MarketCode marketCode = new MarketCode();
+                marketCode.setName(marketCode1.getName());
+                marketCode.setTel(marketCode1.getTel());
+                marketCode.setStartTime(marketCode1.getStartTime());
+                marketCode.setEndTime(marketCode1.getEndTime());
+                marketCode.setBatchId(marketCode1.getBatchId());
+                marketCode.setPrizeId(marketCode1.getPrizeId());
+                marketCode.setStatus(marketCode1.getStatus());
+                marketCode.setPromotionId(marketCode1.getPromotionId());
+                vrecord.add(marketCode);
+                request.getSession().setAttribute("vrecord",vrecord);
+                System.out.println(vrecord);
+            }
+            System.out.println(marketCodes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 
 
