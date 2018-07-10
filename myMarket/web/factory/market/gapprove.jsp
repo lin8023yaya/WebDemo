@@ -19,7 +19,11 @@
 <div style="height: 30px;width: 100%;background-color:#F8F8FF;"><h3 style="margin-top: 10px;margin-left: 0px;background-color:#FFFFFF;width: 105px;height: 100%">&nbsp;活动审批</h3></div>
 <div id="main">
     <table  width="100%" border="1" cellspacing="0" cellpadding="0" style="margin-left: 0px;margin-top: 0px;font-family: 宋体;border: none" >
-        <thead style="background-color: #EEEEED;border: none;font-size: 14px"><tr><th>奖品配置序号</th><th>申请人</th><th>电话</th><th>开始时间</th><th>结束时间</th><th>商品生产批次号</th><th>操作 </th></tr></thead>
+        <thead style="background-color: #EEEEED;border: none;font-size: 14px"><tr><th>奖品配置序号</th><th>申请人</th><th>电话</th><th>开始时间</th><th>结束时间</th>
+            <th>商品生产批次号</th>
+            <th>操作</th>
+        </tr>
+        </thead>
         <tbody style="font-size: 14px;font-weight: normal;border: none">
         <c:forEach items="${gapprove}" var="approve" varStatus="status"  >
             <tr style="margin-top: 0px" class="${approve.id}">

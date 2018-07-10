@@ -144,21 +144,54 @@ public class MarketService {
     }
 
 
+    public Result toApply(Long vendorId) {
+        Result result = new Result();
+        List<MarketCode> marketCodes = null;
+        try {
+            marketCodes = marketMapper.toApply(vendorId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (marketCodes != null) {
+            result.setStatus(1);
+            result.setMessage("查询成功!");
+            result.setData(marketCodes);
+        }else{
+            result.setStatus(0);
+            result.setMessage("请联系后台");
+        }
+        return result;
+    }
 
+    public Result pass(int id) {
+        Result result = new Result();
+        int rowAffect = marketMapper.pass(id);
+        if (rowAffect == 1) {
+            result.setStatus(1);
+            result.setMessage("审批通过!");
+        }else {
+            result.setStatus(0);
+            result.setMessage("请联系后台!");
+        }
+        return result;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public Result record() {
+        Result result = new Result();
+        MarketCode marketCode = null;
+        try {
+            marketCode = marketMapper.record();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (marketCode != null) {
+            result.setStatus(1);
+            result.setMessage("查询成功!");
+            result.setData(marketCode);
+        }else {
+            result.setStatus(0);
+            result.setMessage("请联系后台!");
+        }
+        return result;
+    }
 }

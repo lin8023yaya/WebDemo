@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody style="font-size: 14px;font-weight: normal;border: none">
-            <c:forEach items="vrecord" var="cord" varStatus="status">
+            <c:forEach items="${vrecord}" var="cord" varStatus="status">
                 <tr style="margin-top: 20px">
                     <th>${cord.prizeId}</th>
                     <th>${cord.name}</th>

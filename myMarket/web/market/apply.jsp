@@ -28,7 +28,8 @@
             /*border: 1px solid transparent;*/
         }
 
-        #but0, #but, #qiyeSee0, #qiyeSee1, #guanliSee0, #guanliSee1 {
+        #but0, #but, #qiyeSee0, #qiyeSee1, #guanliSee0, #guanliSee1
+        #record0,#record1 {
             border: 1px solid #015595;
             border-radius: 3px;
             background-color: #015595;
@@ -63,7 +64,8 @@
         <br/>
         <button onclick="qiyeSee(this.value)" id="qiyeSee0" value="0">查看配置-企业</button>
         <br/>
-        <button onclick="guanliSee(this.value)" id="guanliSee0" value="0">查看配置-管理</button>
+        <button onclick="guanliSee(this.value)" id="guanliSee0" value="0">查看配置审批-管理</button>
+        <button onclick="allPrize(this.value)" id="record0" value="0">查看所有配置-管理</button>
     </div>
 
 
@@ -81,7 +83,8 @@
         <br/>
         <button onclick="qiyeSee(this.value)" id="qiyeSee1" value="1">查看配置-企业</button>
         <br/>
-        <button onclick="guanliSee(this.value)" id="guanliSee1" value="1">查看配置-管理</button>
+        <button onclick="guanliSee(this.value)" id="guanliSee1" value="1">查看红包-管理</button>
+        <button onclick="allPrize(this.value)" id="record1" value="1">查看所有红包-管理</button>
     </div>
 
 
@@ -270,18 +273,51 @@
         }
         if (val == 1) {
             alert(1);
+
         }
     }
 
     function guanliSee(val) {
         if (val == 0) {
-            alert(0);
+            //alert(0);
+            $.ajax({
+                type:"get",
+                url:"/market/apply?vendorId="+vendorId,
+                dataType:"json",
+                success:function (result) {
+                    alert(result.message);
+                    window.location.href="graprove.jsp";
+                },
+                error:function () {
+                    alert("提交失败!");
+                }
+            })
         }
         if (val == 1) {
             alert(1);
         }
     }
 
+    function allPrize(val) {
+        if (val == 0) {
+            //alert(0);
+            $.ajax({
+                type:"get",
+                url:"/market/record",
+                dataType:"json",
+                success:function (result) {
+                    alert(result.message);
+                    window.location.href="record.jsp";
+                },
+                error:function () {
+                    alert("提交失败!");
+                }
+            })
+        }
+        if (val == 1) {
+            alert(1);
+        }
+    }
     function change(val) {
         $("#1").hide();
         $("#2").hide();

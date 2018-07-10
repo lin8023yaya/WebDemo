@@ -107,28 +107,55 @@ public class MarketController {
         try {
             result = marketService.toVrecord(vendorId);
             List<MarketCode> marketCodes = (List<MarketCode>) result.getData();
-            List<MarketCode> vrecord = new ArrayList<>();
-            for (MarketCode marketCode1:marketCodes) {
-                //name,tel,starttime,endtime,batchid,prizeid,status,promotionid
-                MarketCode marketCode = new MarketCode();
-                marketCode.setName(marketCode1.getName());
-                marketCode.setTel(marketCode1.getTel());
-                marketCode.setStartTime(marketCode1.getStartTime());
-                marketCode.setEndTime(marketCode1.getEndTime());
-                marketCode.setBatchId(marketCode1.getBatchId());
-                marketCode.setPrizeId(marketCode1.getPrizeId());
-                marketCode.setStatus(marketCode1.getStatus());
-                marketCode.setPromotionId(marketCode1.getPromotionId());
-                vrecord.add(marketCode);
-                request.getSession().setAttribute("vrecord",vrecord);
-                System.out.println(vrecord);
-            }
+
+            request.getSession().setAttribute("vrecord",marketCodes);
             System.out.println(marketCodes);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
+    @ResponseBody
+    @RequestMapping("apply")
+    public Result toApply(Long vendorId,HttpServletRequest request){
+        Result result = null;
+        try {
+            result = marketService.toApply(vendorId);
+            List<MarketCode> marketCodes = (List<MarketCode>) result.getData();
+
+            request.getSession().setAttribute("graprove",marketCodes);
+            System.out.println(marketCodes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    @ResponseBody
+    @RequestMapping("pass")
+    public Result pass(int id){
+        Result result = null;
+        result = marketService.pass(id);
+        return result;
+    }
+    @ResponseBody
+    @RequestMapping("record")
+    public Result record(HttpServletRequest request){
+        Result result = null;
+        result = marketService.record();
+        List<MarketCode> marketCodes = (List<MarketCode>) result.getData();
+
+        request.getSession().setAttribute("record",marketCodes);
+        return result;
+    }
+
+
+
+
+
+
+
+
+
 
 
 

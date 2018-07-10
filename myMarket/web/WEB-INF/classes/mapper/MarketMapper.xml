@@ -71,25 +71,53 @@
     </delete>
     <insert id="redSet" parameterType="com.ctcs.market.entity.Redpacket">
         INSERT INTO redpacketinfo (
-            vendorid, redtype, redmoney,moneytotal, rednum)
-        VALUES (#{vendorId}, #{redType}, #{redMoney}, #{moneyTotal},#{redNum})
+            vendorid, redtype, redmoney, moneytotal, rednum)
+        VALUES (#{vendorId}, #{redType}, #{redMoney}, #{moneyTotal}, #{redNum})
     </insert>
     <update id="updatePrize" parameterType="com.ctcs.market.entity.Prize">
         UPDATE t_bust_prize
-        SET endtime=#{endTime}, prize1 =#{prize1}, prize2=#{prize2},prize3=#{prize3},prize4=#{prize4},
-            prize5=#{prize5},prize6=#{prize6},odds1=#{odds1},odds2=#{odds3},odds3=#{odds3},odds4=#{odds4},odds5=#{odds5},odds6=#{odds6}
+        SET endtime = #{endTime}, prize1 = #{prize1}, prize2 = #{prize2}, prize3 = #{prize3}, prize4 = #{prize4},
+            prize5  = #{prize5}, prize6 = #{prize6}, odds1 = #{odds1}, odds2 = #{odds3}, odds3 = #{odds3},
+            odds4   = #{odds4}, odds5 = #{odds5}, odds6 = #{odds6}
         WHERE vendorid = #{vendorId} AND promotionid = #{promotionId}
     </update>
     <insert id="marketCode" parameterType="com.ctcs.market.entity.MarketCode">
-        INSERT INTO t_busi_marketcode(
-            vendorid, status, starttime, endtime, name,promotionid,
-            tel, prizeid, typeid, batchid) VALUES(
-            #{vendorId},#{status},#{startTime},#{endTime},#{name},
-            #{promotionId},#{tel},#{prizeId},#{typeId},#{batchId}
+        INSERT INTO t_busi_marketcode (
+            vendorid, status, starttime, endtime, name, promotionid,
+            tel, prizeid, typeid, batchid) VALUES (
+            #{vendorId}, #{status}, #{startTime}, #{endTime}, #{name},
+            #{promotionId}, #{tel}, #{prizeId}, #{typeId}, #{batchId}
         )
     </insert>
     <select id="toVrecord" parameterType="java.lang.Long" resultType="com.ctcs.market.entity.MarketCode">
-        SELECT name,tel,starttime,endtime,batchid,prizeid,status,promotionid FROM t_busi_marketcode
-        WHERE vendorid = #{vendorId} AND status=1 OR status=2;
+        SELECT
+            name,
+            tel,
+            starttime,
+            endtime,
+            batchid,
+            prizeid,
+            status,
+            promotionid
+        FROM t_busi_marketcode
+        WHERE vendorid = #{vendorId} AND status = 1 OR status = 2;
+    </select>
+    <select id="toApply" parameterType="java.lang.Long" resultType="com.ctcs.market.entity.MarketCode">
+        SELECT
+            id,
+            name,
+            tel,
+            starttime,
+            endtime,
+            batchid,
+            prizeid
+        FROM t_busi_marketcode
+        WHERE status = 0;
+    </select>
+    <update id="pass" parameterType="java.lang.Integer">
+        UPDATE t_busi_marketcode SET status = 1 WHERE id=#{id}
+    </update>
+    <select id="record" resultType="com.ctcs.market.entity.MarketCode">
+        SELECT prizeid,name,tel,starttime,endtime,status FROM t_busi_marketcode WHERE status=1 OR status=2
     </select>
 </mapper>

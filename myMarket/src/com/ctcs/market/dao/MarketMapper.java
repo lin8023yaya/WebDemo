@@ -23,6 +23,13 @@ public interface MarketMapper {
     int updatePrize(Prize prize);
     //企业申请活动
     int marketCode(MarketCode marketCode);
-
+    //企业查看已经申请好的活动包括使用的和已经结束的
     List<MarketCode> toVrecord(Long vendorID);
+    //管理端查看正在申请的活动
+    List<MarketCode> toApply(Long vendorId);
+    //管理端通过审批+
+    int pass(int id);
+
+    //管理查看所有活动
+    MarketCode record();
 }
