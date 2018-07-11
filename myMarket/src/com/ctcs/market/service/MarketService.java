@@ -5,6 +5,7 @@ import com.ctcs.market.entity.MarketCode;
 import com.ctcs.market.entity.Prize;
 import com.ctcs.market.entity.Redpacket;
 import com.ctcs.market.entity.Result;
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -178,9 +179,9 @@ public class MarketService {
 
     public Result record() {
         Result result = new Result();
-        MarketCode marketCode = null;
+        List<MarketCode> marketCode = null;
         try {
-            marketCode = marketMapper.record();
+            marketCode = (List<MarketCode>) marketMapper.record();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -193,5 +194,28 @@ public class MarketService {
             result.setMessage("请联系后台!");
         }
         return result;
+    }
+
+    public Result toClose(Integer id) {
+        Result result = new Result();
+        int rowAffect = 0;
+        try {
+            rowAffect = marketMapper.toClose(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (rowAffect == 1) {
+            result.setStatus(1);
+            result.setMessage("更新成功!");
+        }else {
+            result.setStatus(0);
+            result.setMessage("请联系后台!");
+        }
+        return result;
+    }
+
+    public int findStatus(Integer id) {
+        int status = marketMapper.findStatus(id);
+       return status;
     }
 }

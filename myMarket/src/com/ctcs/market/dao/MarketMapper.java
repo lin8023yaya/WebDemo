@@ -31,5 +31,10 @@ public interface MarketMapper {
     int pass(int id);
 
     //管理查看所有活动
-    MarketCode record();
+    List<MarketCode> record();
+
+    //关闭开启状态
+    int toClose(Integer id);
+    //查看活动状态
+    int findStatus(Integer id);
 }

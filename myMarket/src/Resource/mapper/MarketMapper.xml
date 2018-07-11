@@ -118,6 +118,12 @@
         UPDATE t_busi_marketcode SET status = 1 WHERE id=#{id}
     </update>
     <select id="record" resultType="com.ctcs.market.entity.MarketCode">
-        SELECT prizeid,name,tel,starttime,endtime,status FROM t_busi_marketcode WHERE status=1 OR status=2
+        SELECT id,prizeid,name,tel,starttime,endtime,status FROM t_busi_marketcode WHERE status=1 OR status=2 ORDER BY prizeid DESC
+    </select>
+    <update id="toClose" parameterType="java.lang.Integer">
+        UPDATE t_busi_marketcode SET status = 2 WHERE id=#{id}
+    </update>
+    <select id="findStatus" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT status FROM t_busi_marketcode WHERE id=#{id}
     </select>
 </mapper>

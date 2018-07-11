@@ -141,17 +141,39 @@ public class MarketController {
     @RequestMapping("record")
     public Result record(HttpServletRequest request){
         Result result = null;
-        result = marketService.record();
-        List<MarketCode> marketCodes = (List<MarketCode>) result.getData();
+        try {
+            result = marketService.record();
+            List<MarketCode> marketCodes = (List<MarketCode>) result.getData();
 
-        request.getSession().setAttribute("record",marketCodes);
+            request.getSession().setAttribute("record",marketCodes);
+            System.out.println(marketCodes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    @ResponseBody
+    @RequestMapping("close")
+    public Result close(Integer id){
+        Result result = null;
+        int status = marketService.findStatus(id);
+        System.out.println(status);
+        if (status == 1) {
+            result = marketService.toClose(id);
+        }else if(status == 2){
+            result = marketService.pass(id);
+        }
+
         return result;
     }
 
-
-
-
-
+    @ResponseBody
+    @RequestMapping("ispromotion")
+    public Result ispromotion(String url){
+        Result result = new Result();
+        result.setMessage("dskd");
+        return result;
+    }
 
 
 

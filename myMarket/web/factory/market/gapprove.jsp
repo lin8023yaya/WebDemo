@@ -25,7 +25,7 @@
         </tr>
         </thead>
         <tbody style="font-size: 14px;font-weight: normal;border: none">
-        <c:forEach items="${gapprove}" var="approve" varStatus="status"  >
+        <c:forEach items="${graprove}" var="approve" varStatus="status"  >
             <tr style="margin-top: 0px" class="${approve.id}">
                 <th>${approve.prizeid}</th>
                 <th>${approve.name}</th>

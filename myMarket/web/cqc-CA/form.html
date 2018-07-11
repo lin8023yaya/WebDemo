@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>登记质保</title>
+    <link rel="stylesheet" href="./css/app.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <style>
+        .info{
+            margin: 20px;
+            margin-left: 3em;
+        }
+        span{
+            font-size: 15px;
+            margin-left: 45px;
+        }
+        .form_input{
+            box-sizing: border-box;
+            /*text-align: left;*/
+            font-size: 1.2em;
+            height: 1.2em;
+            width: 7em;
+            border-radius: 5px;
+            border: 1px solid #6A6A6A;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            display: block;
+            outline: 0;
+            padding: 0 1em;
+            background: #f2f2f2;
+            opacity: 0.7;
+            /*float: left;*/
+            margin-left: 6em;
+            margin-top: -1em;
+        }
+        input[type="submit"]{
+            width: 150px;
+            height: 40px;
+            border: none;
+            border-radius: 18px;
+            background-color: #5792BD;
+            margin-left: 6em;
+            margin-top: 5em;
+            color: #fff;
+            font-size: 18px;
+        }
+        #iptfileupload{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--form表单-->
+<div class="mian">
+    <div class="info">
+        <p style="font-size: 14px;">产品品牌：波尔德</p>
+        <p style="font-size: 14px;">产品型号：KJ430F-B01</p>
+        <p style="font-size: 14px;">产品编号：C20E2A40-0043-A666C</p>
+    </div>
+    <hr style="height:1px;border:none;border-top:1.5px solid #E6E6E6;" />
+    <form action="" method="get" >
+        <div class="input_name" style="margin-top: 30px;">
+            <span>消费者姓名：</span>
+            <input type="text" class="form_input"/>
+        </div>
+        <div class="input_phone" style="margin-top: 15px;">
+            <span>消费者电话：</span>
+            <input type="text" class="form_input"/>
+        </div>
+        <div class="input_addr" style="margin-top: 15px;margin-bottom: 25px;">
+            <span>消费者地址：</span>
+            <input type="text" class="form_input"/>
+        </div>
+        <hr style="height:1px;border:none;border-top:1.5px solid #E6E6E6;" />
+        <div class="input_date" style="margin-top: 15px;">
+            <span>购买日期：</span>
+            <input type="text" class="form_input"/>
+        </div>
+        <div class="input_ticket" style="margin-top: 15px;">
+            <span>发票证明：</span>
+            <input type='file' id='iptfileupload' name="file" onchange='show()' value='' />
+        </div>
+
+        <input type="submit" value="提  交"  />
+    </form>
+    <div class="write" style="text-align:center">
+        <img src='image/camera.png' alt='' id='camera' align="center" width="170" height="auto"
+             style="text-align:center;margin-left: 97px;margin-top: -230px;"/>
+    </div>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <!--<script src="js/btSubmit.js"></script>-->
+    <script src="js/img_upload.js"></script>
+    <!--<script src="js/localtime.js"></script>-->
+    <script>
+        jQuery(function () {
+            $("#camera").click(function () {
+                $("#iptfileupload").click();
+            });
+        });
+    </script>
+</div>
+<!--form表单结束-->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

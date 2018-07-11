@@ -28,8 +28,7 @@
             /*border: 1px solid transparent;*/
         }
 
-        #but0, #but, #qiyeSee0, #qiyeSee1, #guanliSee0, #guanliSee1
-        #record0,#record1 {
+        #but0, #but, #qiyeSee0, #qiyeSee1, #guanliSee0, #guanliSee1, #record0,#record1 {
             border: 1px solid #015595;
             border-radius: 3px;
             background-color: #015595;
