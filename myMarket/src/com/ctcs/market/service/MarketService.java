@@ -218,4 +218,9 @@ public class MarketService {
         int status = marketMapper.findStatus(id);
        return status;
     }
+
+    public int findCodelog(String url) {
+        int status = marketMapper.findCodelog(url);
+        return status;
+    }
 }

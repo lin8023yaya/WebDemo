@@ -948,21 +948,21 @@
 <!--是否显示-->
 <script>
     $(document).ready(function () {
-//        $("#modal_overlay").show();
+        $("#modal_overlay").show();
         var demo1 = new String("0");
         var url = location.search.split('=')[1];
         $.ajax({
             type: 'post',
-            url: "http://127.0.0.1/market/ispromotion",
-//            headers : {‘Authorization’:’Basic bmVvd2F5Oe4lb3dheQ==’}
+            url: "http://localhost:8080/market/ispromotion",
+            headers : {"Authorization":"Basic bmVvd2F5Oe4lb3dheQ=="},
             dataType: 'json',
             data: {"code": url},
             success: function (result) {
                 //  alert(url);
 //                alert(result.demo);
-                demo1 = result.demo;
+                demo1 = result.message;
                 if (demo1 !== "0") {
-//                    alert("if");
+                    alert("if");
                     $("#modal-overlay").css('display', 'block');
                 } else {
 //                    alert("else");

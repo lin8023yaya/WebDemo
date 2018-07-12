@@ -171,11 +171,13 @@ public class MarketController {
     @RequestMapping("ispromotion")
     public Result ispromotion(String url){
         Result result = new Result();
-        result.setMessage("dskd");
+        int status = marketService.findCodelog(url);
+
+        result.setStatus(status);
         return result;
     }
 
-
+    //public Result
 
 
 

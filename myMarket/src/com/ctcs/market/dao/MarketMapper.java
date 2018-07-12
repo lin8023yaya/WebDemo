@@ -37,4 +37,6 @@ public interface MarketMapper {
     int toClose(Integer id);
     //查看活动状态
     int findStatus(Integer id);
+    //查看url的抽奖记录
+    int findCodelog(String url);
 }

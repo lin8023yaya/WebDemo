@@ -126,4 +126,8 @@
     <select id="findStatus" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         SELECT status FROM t_busi_marketcode WHERE id=#{id}
     </select>
+    <select id="findCodelog" parameterType="java.lang.String" resultType="java.lang.Integer">
+        SELECT status FROM t_bust_codelog WHERE code=#{VALUE}
+    </select>
+
 </mapper>
