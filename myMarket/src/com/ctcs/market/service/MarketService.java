@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName MarketService
@@ -183,6 +185,7 @@ public class MarketService {
         try {
             marketCode = (List<MarketCode>) marketMapper.record();
         } catch (Exception e) {
+
             e.printStackTrace();
         }
         if (marketCode != null) {
@@ -227,5 +230,9 @@ public class MarketService {
             e.printStackTrace();
         }
         return status;
+    }
+
+    public Map getProductData(MarketCode marketCode) {
+        return marketMapper.getProductData(marketCode);
     }
 }

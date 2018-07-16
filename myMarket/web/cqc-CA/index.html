@@ -620,7 +620,7 @@
                 var self = this;
                 $(function () {
 
-                    var url = "http://127.0.0.1/Market/loadteaminfo?code=" + self.common.authCodes;
+                    var url = "http://127.0.0.1/market/loadteaminfo?code=" + self.common.authCodes;
                     //alert(url);
                     $.ajax({
                         url: url,
@@ -958,11 +958,11 @@
             dataType: 'json',
             data: {"code": url},
             success: function (result) {
+                alert(result.message);
                 //  alert(url);
 //                alert(result.demo);
                 demo1 = result.message;
                 if (demo1 !== "0") {
-                    alert("if");
                     $("#modal-overlay").css('display', 'block');
                 } else {
 //                    alert("else");

@@ -172,8 +172,20 @@ public class MarketController {
     public Result ispromotion(String code){
         Result result = new Result();
         int status = marketService.findCodelog(code);
+        Long typeId = Long.valueOf(code.substring(1,12),16);
+        Long id = Long.valueOf(code.substring(12,20),16);
+        String table = "T_BUSI_PA"+Long.toHexString(typeId);
 
-        result.setStatus(status);
+        MarketCode marketCode = new MarketCode();
+        marketCode.setTable(table);
+        marketCode.setArrs(id);
+        Map map = marketService.getProductData(marketCode);
+        Long batchId = (Long) map.get("BATCHID");
+        Long productId = (Long) map.get("REFTYPEID");
+
+
+
+        result.setMessage(batchId+ " " + productId);
         return result;
     }
 

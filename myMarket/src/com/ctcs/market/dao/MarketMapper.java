@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository()
 public interface MarketMapper {
@@ -40,4 +41,6 @@ public interface MarketMapper {
     int findStatus(Integer id);
     //查看url的抽奖记录
     int findCodelog(String code);
+    //获取商品信息
+    Map getProductData(MarketCode marketCode);
 }

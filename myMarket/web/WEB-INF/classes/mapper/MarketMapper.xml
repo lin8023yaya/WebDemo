@@ -126,8 +126,10 @@
     <select id="findStatus" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         SELECT status FROM t_busi_marketcode WHERE id=#{id}
     </select>
-    <select id="findCodelog" parameterType="java.lang.String" resultType="java.lang.Integer">
-        SELECT id FROM t_bust_codelog WHERE code = #{code}
+    <select id="findCodelog" resultType="java.lang.Integer">
+        SELECT IFNULL(status,0) FROM t_bust_codelog WHERE code=#{code}
     </select>
-
+    <select id="getProductData" parameterType="com.ctcs.market.entity.MarketCode" resultType="Map">
+        SELECT  BATCHID,REFTYPEID FROM ${table} WHERE PRODUCTID = #{arrs}
+    </select>
 </mapper>
