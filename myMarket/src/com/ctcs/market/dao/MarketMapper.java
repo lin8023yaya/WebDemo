@@ -3,6 +3,7 @@ package com.ctcs.market.dao;
 import com.ctcs.market.entity.MarketCode;
 import com.ctcs.market.entity.Prize;
 import com.ctcs.market.entity.Redpacket;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -38,5 +39,5 @@ public interface MarketMapper {
     //查看活动状态
     int findStatus(Integer id);
     //查看url的抽奖记录
-    int findCodelog(String url);
+    int findCodelog(String code);
 }

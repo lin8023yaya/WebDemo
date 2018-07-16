@@ -219,8 +219,13 @@ public class MarketService {
        return status;
     }
 
-    public int findCodelog(String url) {
-        int status = marketMapper.findCodelog(url);
+    public int findCodelog(String code) {
+        int status = 0;
+        try {
+            status = marketMapper.findCodelog(code);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return status;
     }
 }

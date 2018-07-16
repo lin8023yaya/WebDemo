@@ -169,9 +169,9 @@ public class MarketController {
 
     @ResponseBody
     @RequestMapping("ispromotion")
-    public Result ispromotion(String url){
+    public Result ispromotion(String code){
         Result result = new Result();
-        int status = marketService.findCodelog(url);
+        int status = marketService.findCodelog(code);
 
         result.setStatus(status);
         return result;
