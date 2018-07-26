@@ -46,9 +46,9 @@ public class MarketService {
     public Result showPrize(Prize prize) {
         Result result = new Result();
         Prize p = new Prize();
-        try{
+        try {
             p = marketMapper.showPrize(prize);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //System.out.println("2");
@@ -65,17 +65,17 @@ public class MarketService {
 
     public Result updateEndTime(Prize prize) {
         //System.out.println("2-1");
-        Result result =new Result();
+        Result result = new Result();
         int rowAffect = 0;
         try {
             rowAffect = marketMapper.updateEndTime(prize);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (rowAffect == 1){
+        if (rowAffect == 1) {
             result.setStatus(1);
             result.setMessage("时间更新成功!");
-        }else {
+        } else {
             result.setStatus(0);
             result.setMessage("时间更新失败!");
         }
@@ -85,9 +85,9 @@ public class MarketService {
     public Result delPrize(Prize prize) {
         Result result = new Result();
         int rowAffect = marketMapper.delPrize(prize);
-        if(rowAffect == 1){
+        if (rowAffect == 1) {
             result.setMessage("删除成功!");
-        }else {
+        } else {
             result.setMessage("请联系后台!");
         }
         return result;
@@ -95,17 +95,17 @@ public class MarketService {
 
 
     public Result updatePrize(Prize prize) {
-        Result result =new Result();
+        Result result = new Result();
         int rowAffect = 0;
         try {
             rowAffect = marketMapper.updatePrize(prize);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (rowAffect == 1){
+        if (rowAffect == 1) {
             result.setStatus(1);
             result.setMessage("数据更新成功!");
-        }else {
+        } else {
             result.setStatus(0);
             result.setMessage("请联系后台!");
         }
@@ -118,9 +118,9 @@ public class MarketService {
         if (rowAffects == 1) {
             result.setStatus(1);
             result.setMessage("活动申请成功!");
-        }else {
-        result.setStatus(1);
-        result.setMessage("请联系后台!");
+        } else {
+            result.setStatus(1);
+            result.setMessage("请联系后台!");
         }
         return result;
     }
@@ -139,7 +139,7 @@ public class MarketService {
             result.setStatus(1);
             result.setMessage("查询成功!");
             result.setData(marketCodes);
-        }else{
+        } else {
             result.setStatus(0);
             result.setMessage("请联系后台");
         }
@@ -159,7 +159,7 @@ public class MarketService {
             result.setStatus(1);
             result.setMessage("查询成功!");
             result.setData(marketCodes);
-        }else{
+        } else {
             result.setStatus(0);
             result.setMessage("请联系后台");
         }
@@ -172,7 +172,7 @@ public class MarketService {
         if (rowAffect == 1) {
             result.setStatus(1);
             result.setMessage("审批通过!");
-        }else {
+        } else {
             result.setStatus(0);
             result.setMessage("请联系后台!");
         }
@@ -192,7 +192,7 @@ public class MarketService {
             result.setStatus(1);
             result.setMessage("查询成功!");
             result.setData(marketCode);
-        }else {
+        } else {
             result.setStatus(0);
             result.setMessage("请联系后台!");
         }
@@ -210,7 +210,7 @@ public class MarketService {
         if (rowAffect == 1) {
             result.setStatus(1);
             result.setMessage("更新成功!");
-        }else {
+        } else {
             result.setStatus(0);
             result.setMessage("请联系后台!");
         }
@@ -219,11 +219,11 @@ public class MarketService {
 
     public int findStatus(Integer id) {
         int status = marketMapper.findStatus(id);
-       return status;
+        return status;
     }
 
-    public int findCodelog(String code) {
-        int status = 0;
+    public Map findCodelog(String code) {
+        Map status = new HashMap();
         try {
             status = marketMapper.findCodelog(code);
         } catch (Exception e) {
@@ -233,6 +233,28 @@ public class MarketService {
     }
 
     public Map getProductData(MarketCode marketCode) {
-        return marketMapper.getProductData(marketCode);
+
+        Map map = new HashMap();
+        try {
+            map = marketMapper.getProductData(marketCode);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
+
+    }
+
+    public Map getBatchData(MarketCode marketCode) {
+        Map map = new HashMap();
+        try {
+            map = marketMapper.getBatchData(marketCode);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return map;
+    }
+
+    public List<MarketCode> ispromotion(MarketCode marketCode) {
+        return marketMapper.ispromotion(marketCode);
     }
 }

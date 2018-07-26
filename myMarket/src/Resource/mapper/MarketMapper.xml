@@ -126,10 +126,18 @@
     <select id="findStatus" parameterType="java.lang.Integer" resultType="java.lang.Integer">
         SELECT status FROM t_busi_marketcode WHERE id=#{id}
     </select>
-    <select id="findCodelog" resultType="java.lang.Integer">
-        SELECT IFNULL(status,0) FROM t_bust_codelog WHERE code=#{code}
+    <select id="findCodelog" parameterType="java.lang.String" resultType="Map">
+        SELECT IFNULL(status,0) FROM t_bust_codelog WHERE code = #{code}
     </select>
     <select id="getProductData" parameterType="com.ctcs.market.entity.MarketCode" resultType="Map">
         SELECT  BATCHID,REFTYPEID FROM ${table} WHERE PRODUCTID = #{arrs}
+    </select>
+    <select id="getBatchData" parameterType="com.ctcs.market.entity.MarketCode" resultType="Map">
+        SELECT  VENDORBATCHID,VENDORID FROM ${batchTable} WHERE BATCHID = #{batchId}
+    </select>
+    <select id="ispromotion" parameterType="com.ctcs.market.entity.MarketCode" resultType="com.ctcs.market.entity.MarketCode">
+        SELECT prizeid,vendorid,starttime,endtime,promotionid FROM t_busi_marketcode
+          WHERE batchid=#{batchId} AND vendorid=#{vendorId}
+          AND status=1 AND typeId= #{productId}
     </select>
 </mapper>

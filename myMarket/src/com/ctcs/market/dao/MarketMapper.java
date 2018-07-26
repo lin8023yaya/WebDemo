@@ -40,7 +40,11 @@ public interface MarketMapper {
     //查看活动状态
     int findStatus(Integer id);
     //查看url的抽奖记录
-    int findCodelog(String code);
+    Map findCodelog(String code);
     //获取商品信息
     Map getProductData(MarketCode marketCode);
+    //获取批次信息
+    Map getBatchData(MarketCode marketCode);
+    //查看该code是否参加活动
+    List<MarketCode> ispromotion(MarketCode marketCode);
 }

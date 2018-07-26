@@ -6,33 +6,33 @@ package com.ctcs.market.entity;
  * @create: 2018-06-14 20:19
  **/
 public class MarketCode {
-    private Integer id;
+    private int id;
     private String table;
     private String mtable;
-    private Integer promotionId;
-    private Long vendorId;
+    private int promotionId;
+    private long vendorId;
     private String startCode;
     private String endCode;
-    private Long startNum;
-    private Long endNum;
-    private Integer status;
-    private Long arrs;
+    private long startNum;
+    private long endNum;
+    private int status;
+    private long arrs;
     private String startTime;
     private String endTime;
     private String name;
     private String tel;
     private String batch;//产品批次号
-    private Long batchId;//产品批次id
-    private Long productId;//产品批次id
+    private long batchId;//产品批次id
+    private long productId;//产品批次id
     private String batchTable;
-    private Integer prizeId;//奖品配置id
-    private Long typeId;
+    private int prizeId;//奖品配置id
+    private long typeId;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -52,19 +52,19 @@ public class MarketCode {
         this.mtable = mtable;
     }
 
-    public Integer getPromotionId() {
+    public int getPromotionId() {
         return promotionId;
     }
 
-    public void setPromotionId(Integer promotionId) {
+    public void setPromotionId(int promotionId) {
         this.promotionId = promotionId;
     }
 
-    public Long getVendorId() {
+    public long getVendorId() {
         return vendorId;
     }
 
-    public void setVendorId(Long vendorId) {
+    public void setVendorId(long vendorId) {
         this.vendorId = vendorId;
     }
 
@@ -84,35 +84,35 @@ public class MarketCode {
         this.endCode = endCode;
     }
 
-    public Long getStartNum() {
+    public long getStartNum() {
         return startNum;
     }
 
-    public void setStartNum(Long startNum) {
+    public void setStartNum(long startNum) {
         this.startNum = startNum;
     }
 
-    public Long getEndNum() {
+    public long getEndNum() {
         return endNum;
     }
 
-    public void setEndNum(Long endNum) {
+    public void setEndNum(long endNum) {
         this.endNum = endNum;
     }
 
-    public Integer getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Long getArrs() {
+    public long getArrs() {
         return arrs;
     }
 
-    public void setArrs(Long arrs) {
+    public void setArrs(long arrs) {
         this.arrs = arrs;
     }
 
@@ -156,19 +156,19 @@ public class MarketCode {
         this.batch = batch;
     }
 
-    public Long getBatchId() {
+    public long getBatchId() {
         return batchId;
     }
 
-    public void setBatchId(Long batchId) {
+    public void setBatchId(long batchId) {
         this.batchId = batchId;
     }
 
-    public Long getProductId() {
+    public long getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(long productId) {
         this.productId = productId;
     }
 
@@ -180,19 +180,46 @@ public class MarketCode {
         this.batchTable = batchTable;
     }
 
-    public Integer getPrizeId() {
+    public int getPrizeId() {
         return prizeId;
     }
 
-    public void setPrizeId(Integer prizeId) {
+    public void setPrizeId(int prizeId) {
         this.prizeId = prizeId;
     }
 
-    public Long getTypeId() {
+    public long getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Long typeId) {
+    public void setTypeId(long typeId) {
         this.typeId = typeId;
+    }
+
+    @Override
+    public String toString() {
+        return "MarketCode{" +
+                "id=" + id +
+                ", table='" + table + '\'' +
+                ", mtable='" + mtable + '\'' +
+                ", promotionId=" + promotionId +
+                ", vendorId=" + vendorId +
+                ", startCode='" + startCode + '\'' +
+                ", endCode='" + endCode + '\'' +
+                ", startNum=" + startNum +
+                ", endNum=" + endNum +
+                ", status=" + status +
+                ", arrs=" + arrs +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", name='" + name + '\'' +
+                ", tel='" + tel + '\'' +
+                ", batch='" + batch + '\'' +
+                ", batchId=" + batchId +
+                ", productId=" + productId +
+                ", batchTable='" + batchTable + '\'' +
+                ", prizeId=" + prizeId +
+                ", typeId=" + typeId +
+                '}';
     }
 }

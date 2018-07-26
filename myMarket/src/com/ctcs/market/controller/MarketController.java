@@ -171,10 +171,10 @@ public class MarketController {
     @RequestMapping("ispromotion")
     public Result ispromotion(String code){
         Result result = new Result();
-        int status = marketService.findCodelog(code);
-        Long typeId = Long.valueOf(code.substring(1,12),16);
+        Map status = marketService.findCodelog(code);
+        Long typeId = Long.valueOf(code.substring(0,12),16);
         Long id = Long.valueOf(code.substring(12,20),16);
-        String table = "T_BUSI_PA"+Long.toHexString(typeId);
+        String table = "t_busi_pa"+Long.toHexString(typeId);
 
         MarketCode marketCode = new MarketCode();
         marketCode.setTable(table);
@@ -182,10 +182,24 @@ public class MarketController {
         Map map = marketService.getProductData(marketCode);
         Long batchId = (Long) map.get("BATCHID");
         Long productId = (Long) map.get("REFTYPEID");
+        System.out.println(batchId+" "+productId);
+        marketCode.setBatchId(batchId);
+        marketCode.setProductId(productId);
+        String batchTable = "t_busi_batch"+Long.toHexString(productId);
+        marketCode.setBatchTable(batchTable);
 
+        Map map1 = marketService.getBatchData(marketCode);
+        String batch = (String) map1.get("VENDORBATCHID");
+        long vendorId = (Long) map1.get("VENDORID");
+        marketCode.setBatch(batch);
+        marketCode.setVendorId(vendorId);
+        System.out.println(batch+" "+vendorId);
 
-
-        result.setMessage(batchId+ " " + productId);
+        List<MarketCode> list = marketService.ispromotion(marketCode);
+        Prize prize = new Prize();
+        System.out.println(list.size());
+        int s = list.size();
+        result.setMessage(id+ " " + table);
         return result;
     }
 
